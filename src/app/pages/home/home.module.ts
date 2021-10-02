@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeDesktopComponent } from './home-desktop/home-desktop.component';
 import { HomeMobileComponent } from './home-mobile/home-mobile.component';
 import { BannerModule } from 'src/app/component/banner/banner.module';
+import { CardsModule } from 'src/app/component/cards/cards.module';
 const routes: Routes = [
   {
     path: '',
@@ -13,15 +14,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    HomeDesktopComponent,
-    HomeMobileComponent,
-  ],
+  declarations: [HomeComponent, HomeDesktopComponent, HomeMobileComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    BannerModule
-  ]
+    BannerModule,
+    CardsModule,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

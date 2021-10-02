@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./banner.component.scss'],
 })
 export class BannerComponent implements OnInit {
-  @Input() slides: any;
+  @Input() mode!:'mobile'|'desktop';
   constructor() {}
 
   ngOnInit(): void {}

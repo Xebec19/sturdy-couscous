@@ -3,15 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss']
+  styleUrls: ['./cards.component.scss'],
 })
 export class CardsComponent implements OnInit {
-  @Input()
-  productImage!: string;
-  @Input()
-  productPrice!: string;
-  @Input()
-  categoryImage!: string;
   @Input()
   name!: string;
   @Input()
@@ -19,10 +13,14 @@ export class CardsComponent implements OnInit {
   @Input()
   category!: string;
   @Input()
+  categoryImage!: string;
+  @Input()
+  productImage!: string;
+  @Input()
   description!: string;
-  constructor() { }
+  @Input()
+  mode!: 'mobile'|'desktop';
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

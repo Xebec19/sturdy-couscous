@@ -1,2 +1,4 @@
-<app-banner [slides]="mobileSlides"></app-banner>
-
+<app-banner mode="mobile"></app-banner>
+<span *ngFor="let item of appStateService.products">
+    <app-cards [name]="''" [price]=32 [category]="''" [categoryImage]="''" [productImage]="''" [description]="''" mode="mobile"></app-cards>
+</span>
