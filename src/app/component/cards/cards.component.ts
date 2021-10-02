@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { IProduct } from 'src/app/models';
+import { RequestHandlerService } from 'src/app/services/request-handler.service';
 
 @Component({
   selector: 'app-cards',
@@ -7,20 +10,30 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
   @Input()
-  name!: string;
-  @Input()
-  price!: number;
-  @Input()
-  category!: string;
-  @Input()
-  categoryImage!: string;
-  @Input()
-  productImage!: string;
-  @Input()
-  description!: string;
-  @Input()
-  mode!: 'mobile'|'desktop';
-  constructor() {}
-
-  ngOnInit(): void {}
+  mode!: 'mobile' | 'desktop';
+  products!: IProduct[];
+  constructor(private requestService: RequestHandlerService) {}
+  ngOnInit(): void {
+    this.getProducts();
+  }
+  getProducts() {
+    this.requestService
+      .getRequest('/public/fetchProducts?limit=10')
+      .pipe(
+        map((res: any) => {
+          if (res.status) {
+            return res;
+          }
+        })
+      )
+      .subscribe(
+        (response: any) => {
+          this.products = response.data;
+          console.log('products are ',this.products);
+        },
+        (error: any) => {
+          console.log(error.message);
+        }
+      );
+  }
 }

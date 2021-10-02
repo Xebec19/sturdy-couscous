@@ -4,3 +4,9 @@ app-banner {
     width: auto;
     overflow-x: hidden;
   }
+app-cards{
+  display:flex;
+  //white-space: nowrap;
+  overflow-x: scroll;
+  //justify-content: space-evenly;
+}

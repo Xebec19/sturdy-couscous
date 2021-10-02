@@ -11,6 +11,7 @@ import { AppStateService } from './services/app-state.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { RequestHandlerService } from './services/request-handler.service';
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
@@ -31,7 +32,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true
-  }],
+  }, RequestHandlerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
