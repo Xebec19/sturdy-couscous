@@ -38,7 +38,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar [color]="isHomePage ? 'transparent' : 'primary'">
+    <mat-toolbar [ngClass]="{hidden : isHomePage}" color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -63,6 +63,5 @@
       </button>
     </mat-toolbar>
     <ng-content></ng-content>
-    <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>

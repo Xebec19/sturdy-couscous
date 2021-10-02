@@ -34,7 +34,7 @@ export class MainNavComponent {
         }))
       )
       .subscribe((routeInfo) => {
-        if (routeInfo.previous.includes('home')) {
+        if (routeInfo.current.includes('home')) {
           this.isHomePage = true;
         } else {
           this.isHomePage = false;

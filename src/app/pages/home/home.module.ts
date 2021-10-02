@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeDesktopComponent } from './home-desktop/home-desktop.component';
 import { HomeMobileComponent } from './home-mobile/home-mobile.component';
-
+import { BannerModule } from 'src/app/component/banner/banner.module';
 const routes: Routes = [
   {
     path: '',
@@ -12,16 +12,16 @@ const routes: Routes = [
   },
 ];
 
-
 @NgModule({
   declarations: [
     HomeComponent,
     HomeDesktopComponent,
-    HomeMobileComponent
+    HomeMobileComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    BannerModule
   ]
 })
 export class HomeModule { }
