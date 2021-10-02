@@ -1,0 +1,68 @@
+<mat-sidenav-container class="sidenav-container">
+  <!--[ngClass]="{hidden : !(isXL$ | async)}"-->
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [ngClass]="{ hidden: !(isHandset$ | async) && !(isXL$ | async) }"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav
+    #cartdrawer
+    position="end"
+    class="cart-sidenav"
+    [ngClass]="{
+      hidden: !(isHandset$ | async) && !(isXL$ | async),
+      'cart-sidenav-mobile': (isHandset$ | async),
+      'cart-sidenav-desktop': (isXL$ | async)
+    }"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Cart</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Item 1</a>
+      <a mat-list-item href="#">Item 2</a>
+      <a mat-list-item href="#">Item 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar [color]="isHomePage ? 'transparent' : 'primary'">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>frontEnd</span>
+      <!--TODO add a cart route here-->
+      <button
+        type="button"
+        aria-label="Cart"
+        mat-icon-button
+        (click)="cartdrawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-hidden="false" aria-label="cart icon"
+          >shopping_cart</mat-icon
+        >
+      </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
