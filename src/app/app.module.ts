@@ -9,6 +9,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './utils/material/material.module';
 import { AppStateService } from './services/app-state.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoggingInterceptorService } from './services/logging-interceptor.service';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
@@ -20,7 +22,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MaterialModule,
     HttpClientModule,
   ],
-  providers: [AppStateService],
+  providers: [AppStateService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoggingInterceptorService,
+    multi: true
+  },{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
