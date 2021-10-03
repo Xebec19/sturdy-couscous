@@ -1,7 +1,7 @@
 <ng-container *ngIf="products ; else elseBlock">
-  <span></span>
 <span *ngFor="let product of products">
-  <mat-card 
+  <mat-card
+  [routerLink]="['/product/' + product.product_id]" 
   [ngClass]="mode === 'mobile'? 'mobile' : 'desktop'">
       <img mat-card-image [src]="product.product_image" [alt]="product.product_name">
       <mat-card-content>

@@ -57,7 +57,8 @@
         (click)="cartdrawer.toggle()"
         *ngIf="isHandset$ | async"
       >
-        <mat-icon aria-hidden="false" aria-label="cart icon"
+        <mat-icon aria-hidden="false" aria-label="cart icon" 
+        matBadge="15" matBadgeColor="accent"
           >shopping_cart</mat-icon
         >
       </button>

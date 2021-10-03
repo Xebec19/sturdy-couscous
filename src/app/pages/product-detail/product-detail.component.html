@@ -1,0 +1,8 @@
+<div *ngIf="(isHandset$ | async); else desktop">
+    <app-product-mobile></app-product-mobile>
+</div>
+<ng-template #desktop>
+    <app-product-desktop></app-product-desktop>
+</ng-template>
+
+

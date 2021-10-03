@@ -23,16 +23,20 @@ import { RequestHandlerService } from './services/request-handler.service';
     MaterialModule,
     HttpClientModule,
   ],
-  providers: [AppStateService,
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: LoggingInterceptorService,
-    multi: true
-  },{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptorService,
-    multi: true
-  }, RequestHandlerService],
+  providers: [
+    AppStateService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+    RequestHandlerService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -7,6 +7,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'product/:id',
+    loadChildren: () =>
+      import('./pages/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
+  },
   { path: '**', redirectTo: '/home' },
 ];
 

@@ -1,0 +1,6 @@
+<div *ngIf="product else loading">
+    <img [src]="product?.product_image" [alt]="product?.product_name">
+</div>
+<ng-template #loading>
+    <app-spinner></app-spinner>
+</ng-template>
