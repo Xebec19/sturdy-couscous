@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [],
   imports: [
@@ -20,7 +20,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatListModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   exports: [
     MatToolbarModule,
@@ -30,7 +31,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatListModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule
   ],
 })
 export class MaterialModule {}

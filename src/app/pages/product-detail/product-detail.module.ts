@@ -5,6 +5,8 @@ import { ProductDesktopComponent } from './product-desktop/product-desktop.compo
 import { ProductDetailComponent } from './product-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SpinnerModule } from 'src/app/component/spinner/spinner.module';
+import { MaterialModule } from 'src/app/utils/material/material.module';
+import { CardsModule } from 'src/app/component/cards/cards.module';
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +23,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SpinnerModule
+    SpinnerModule,
+    MaterialModule,
+    CardsModule
   ]
 })
 export class ProductDetailModule { }

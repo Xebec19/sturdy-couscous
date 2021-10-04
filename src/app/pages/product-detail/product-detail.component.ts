@@ -1,9 +1,11 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { interval, Observable, pipe, Subscription } from 'rxjs';
+import { debounce, map, scan, shareReplay } from 'rxjs/operators';
 import { IProductDetails } from 'src/app/models';
+import { AppStateService } from 'src/app/services/app-state.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 @Component({
   selector: 'app-product-detail',
@@ -17,19 +19,29 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       map((result) => result.matches),
       shareReplay()
     );
+  selectedQuantity = 1;
   productId: any;
   paramsSubscription!: Subscription;
   product!: IProductDetails;
+  priceSymbol: any;
+  priceSymbolSubsciption: Subscription;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private route: ActivatedRoute,
-    private requestService: RequestHandlerService
+    private requestService: RequestHandlerService,
+    private appStateService: AppStateService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.params.subscribe((params: Params) => {
       this.productId = params['id'];
     });
+    this.priceSymbolSubsciption = this.appStateService.priceSymbol$.subscribe(
+      (val) => {
+        this.priceSymbol = val;
+      }
+    );
     this.getProduct();
   }
   getProduct() {
@@ -47,13 +59,25 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           status: response.data.status,
           price: response.data.price,
           delivery_price: response.data.delivery_price,
-          product_desc: response.data.delivery_price,
+          product_desc: response.data.product_desc,
           gender: response.data.gender,
         };
-        console.log(this.product);
       });
+  }
+  openSnackBar() {
+    this._snackBar.open('sorry, no more quantity available', 'Close', {
+      duration: 5000,
+    });
+  }
+  updateQuantity(action: string) {
+    if (action === 'inc') {
+      this.selectedQuantity < this.product.quantity
+        ? this.selectedQuantity++
+        : this.openSnackBar();
+    }
   }
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
+    this.priceSymbolSubsciption.unsubscribe();
   }
 }

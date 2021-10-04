@@ -1,0 +1,35 @@
+img{
+    overflow-x: hidden;
+    height: 50vh;
+    width: 100%;
+    object-fit: fill;
+}
+mat-toolbar{
+    z-index: 1;
+    position: sticky;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+mat-toolbar > span{
+    display: flex;
+    align-items: center;
+}
+.qty{
+    padding: 0px 5px;
+}
+
+app-cards{
+    display:flex;
+    overflow-x: scroll;
+  }
+.out-of-stock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.out-of-stock > p{
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}

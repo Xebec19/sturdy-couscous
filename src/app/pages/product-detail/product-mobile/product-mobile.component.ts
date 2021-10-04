@@ -8,6 +8,7 @@ import { ProductDetailComponent } from '../product-detail.component';
 export class ProductMobileComponent extends ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
+    super.ngOnInit();
   }
 
 }
