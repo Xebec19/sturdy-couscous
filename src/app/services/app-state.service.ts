@@ -15,6 +15,7 @@ export class AppStateService {
       map((result) => result.matches),
       shareReplay()
     );
+  isLoading$ = new BehaviorSubject(false);
   isXl$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(

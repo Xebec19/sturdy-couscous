@@ -12,7 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { RequestHandlerService } from './services/request-handler.service';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
   imports: [
@@ -22,6 +22,7 @@ import { RequestHandlerService } from './services/request-handler.service';
     LayoutModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     AppStateService,

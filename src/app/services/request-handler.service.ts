@@ -24,15 +24,6 @@ export class RequestHandlerService {
   postRequest(link: string, data: any) {
     return this.http
       .post(environment.baseUrl + link, data, { observe: 'response' })
-      .subscribe(
-        (responseData: any) => {
-          console.log(responseData);
-          return responseData;
-        },
-        (error: { message: string | undefined; }) => {
-          this.error.next(error.message);
-        }
-      );
   }
 
   
