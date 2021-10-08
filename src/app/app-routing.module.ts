@@ -7,11 +7,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
+  // {
+  //   path: 'product/:id',
+  //   loadChildren: () =>
+  //     import('./pages/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
+  //     canActivate: [CheckTokenService],
+  // },
   {
     path: 'product/:id',
     loadChildren: () =>
       import('./pages/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
-      canActivate: [CheckTokenService],
   },
   {
     path: 'login',

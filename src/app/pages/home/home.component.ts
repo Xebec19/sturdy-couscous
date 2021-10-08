@@ -2,17 +2,15 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { shareReplay, map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 import { AppStateService } from 'src/app/services/app-state.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
-import { IProduct, IResponseData } from 'src/app/models';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  products : any;
+  products: any;
   constructor(
     public appStateService: AppStateService,
     private breakpointObserver: BreakpointObserver,
