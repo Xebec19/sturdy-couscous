@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
+      import('./modules/home/home.module').then((m) => m.HomeModule),
   },
   // {
   //   path: 'product/:id',
@@ -16,12 +16,12 @@ const routes: Routes = [
   {
     path: 'product/:id',
     loadChildren: () =>
-      import('./pages/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
+      import('./modules/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
   },
   {
     path: 'login',
     loadChildren: () =>
-      import('./pages/login/login.module').then((m) => m.LoginModule),
+      import('./modules/login/login.module').then((m) => m.LoginModule),
   },
   { path: '**', redirectTo: '/home' },
 ];

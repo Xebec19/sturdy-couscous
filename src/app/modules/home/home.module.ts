@@ -4,8 +4,8 @@ import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeDesktopComponent } from './home-desktop/home-desktop.component';
 import { HomeMobileComponent } from './home-mobile/home-mobile.component';
-import { BannerModule } from 'src/app/component/banner/banner.module';
-import { CardsModule } from 'src/app/component/cards/cards.module';
+import { BannerModule } from 'src/app/shared/banner/banner.module';
+import { CardsModule } from 'src/app/shared/cards/cards.module';
 const routes: Routes = [
   {
     path: '',
