@@ -38,7 +38,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar [ngClass]="{hidden : isHomePage}" color="primary">
+    <mat-toolbar color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -55,13 +55,16 @@
         aria-label="Cart"
         mat-icon-button
         (click)="cartdrawer.toggle()"
-        *ngIf="isHandset$ | async"
+        *ngIf="isHandset$ && this.appStateService.userToken$ | async"
       >
         <mat-icon aria-hidden="false" aria-label="cart icon" 
         matBadge="15" matBadgeColor="accent"
           >shopping_cart</mat-icon
         >
       </button>
+      <mat-icon *ngIf="!(this.appStateService.userToken$ | async)" [routerLink]="['/user']" aria-hidden="false" aria-label="cart icon" 
+          >account_circle</mat-icon
+        >
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

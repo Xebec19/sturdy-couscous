@@ -22,7 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LayoutModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AppStateService,

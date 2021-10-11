@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { filter, map, pairwise, shareReplay } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { AppStateService } from 'src/app/services/app-state.service';
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
@@ -44,6 +45,7 @@ export class MainNavComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    public appStateService: AppStateService
   ) {}
 }

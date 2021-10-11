@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { IResponseData } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,10 @@ export class RequestHandlerService {
 
   postRequest(link: string, data: any) {
     return this.http
-      .post(environment.baseUrl + link, data, { observe: 'response' })
+      .post<IResponseData>(environment.baseUrl + link, data, { observe: 'response' }).pipe(catchError((errorRes) => {
+        console.log('--catch error : ',errorRes);
+        return throwError(errorRes);
+      }))
   }
 
   

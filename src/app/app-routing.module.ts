@@ -7,23 +7,17 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
-  // {
-  //   path: 'product/:id',
-  //   loadChildren: () =>
-  //     import('./pages/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
-  //     canActivate: [CheckTokenService],
-  // },
   {
     path: 'product/:id',
     loadChildren: () =>
       import('./modules/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
   },
   {
-    path: 'login',
+    path: 'user',
     loadChildren: () =>
-      import('./modules/login/login.module').then((m) => m.LoginModule),
+      import('./modules/user/user.module').then((m) => m.UserModule),
   },
-  { path: '**', redirectTo: '/home' },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 @NgModule({
