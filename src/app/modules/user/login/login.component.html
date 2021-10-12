@@ -41,7 +41,9 @@
     <span>Password should be 8 characters long</span>
   </mat-hint>
   <mat-card-actions>
-    <button mat-raised-button [disabled]="!!!this.signInForm.valid">Sign In</button>
+    <button mat-raised-button class="mb-2" [disabled]="!!!this.signInForm.valid">Sign In</button>
+    <mat-divider></mat-divider>
+    <p mat-raised-button class="mt-2" [routerLink]="['/user/register']">New Account</p>
   </mat-card-actions>
 </mat-card>
 </form>

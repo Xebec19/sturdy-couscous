@@ -1,1 +1,109 @@
-<p>register works!</p>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <mat-card class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="firstName"/>
+          </mat-form-field>
+          <mat-hint
+            *ngIf="
+              signUpForm.controls.firstName?.touched &&
+              signUpForm.controls.firstName.errors?.required
+            "
+          >
+            <span>First name is required</span>
+          </mat-hint>
+          <mat-hint
+            *ngIf="
+              signUpForm.controls.firstName?.touched &&
+              signUpForm.controls.firstName.errors?.pattern
+            "
+          >
+            <span>First name is invalid</span>
+          </mat-hint>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="lastName"/>
+          </mat-form-field>
+          <mat-hint
+            *ngIf="
+              signUpForm.controls.lastName?.touched &&
+              signUpForm.controls.lastName.errors?.required
+            "
+          >
+            <span>Last name is required</span>
+          </mat-hint>
+          <mat-hint
+            *ngIf="
+              signUpForm.controls.lastName?.touched &&
+              signUpForm.controls.lastName.errors?.pattern
+            "
+          >
+            <span>Last name is invalid</span>
+          </mat-hint>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email"/>
+      </mat-form-field>
+      <mat-hint
+        *ngIf="
+          signUpForm.controls.email?.touched &&
+          signUpForm.controls.email.errors?.required
+        "
+      >
+        <span>Email is required</span>
+      </mat-hint>
+      <mat-hint
+        *ngIf="
+          signUpForm.controls.email?.touched &&
+          signUpForm.controls.email.errors?.email
+        "
+      >
+        <span>Email is invalid</span>
+      </mat-hint>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput placeholder="Phone" formControlName="phone"/>
+      </mat-form-field>
+      <mat-hint
+        *ngIf="
+          signUpForm.controls.phone?.touched &&
+          signUpForm.controls.phone.errors?.minlength
+        "
+      >
+        <span>Phone number must have 10 digits</span>
+      </mat-hint>
+      <mat-hint
+        *ngIf="
+          signUpForm.controls.phone?.touched &&
+          signUpForm.controls.phone.errors?.pattern
+        "
+      >
+        <span>Phone is invalid</span>
+      </mat-hint>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" formControlName="password"/>
+      </mat-form-field>
+      <mat-hint
+        *ngIf="
+          signUpForm.controls.password?.touched &&
+          signUpForm.controls.password.errors?.required
+        "
+      >
+        <span>Password is required</span>
+      </mat-hint>
+      <mat-hint
+        *ngIf="
+          signUpForm.controls.password?.touched &&
+          signUpForm.controls.password.errors?.minlength
+        "
+      >
+        <span>Password should be 8 characters long</span>
+      </mat-hint>
+      <mat-card-actions>
+        <button mat-raised-button [disabled]="!!!this.signUpForm.valid">Sign In</button>
+      </mat-card-actions>
+    </mat-card>
+    </form>

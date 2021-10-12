@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AppStateService } from 'src/app/services/app-state.service';
+import { RequestHandlerService } from 'src/app/services/request-handler.service';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +11,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  signUpForm = new FormGroup({
+    firstName: new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z ]*")]),
+    lastName: new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z ]*")]),
+    email: new FormControl("",[Validators.required,Validators.email]),
+    phone: new FormControl("",[Validators.minLength(10),Validators.pattern("^(0|[1-9][0-9]*)$")]),
+    password: new FormControl("",[Validators.required,Validators.minLength(8)])
+  })
+  constructor(private requestService: RequestHandlerService, private appStateService: AppStateService, private router: Router, private _errorAlert:MatSnackBar) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  onSubmit(){
+    this.signUpForm.controls.email.patchValue(this.signUpForm.controls.email.value.trim());
+    this.signUpForm.controls.phone.patchValue(+this.signUpForm.controls.phone.value);
+    console.log("Sign up form value : ",this.signUpForm.value);
+    this.requestService.postRequest('/public/register',this.signUpForm.value).subscribe((response:any) => {
+      console.log('response : ',response);
+      if(response.status){
+        localStorage.setItem('token',JSON.stringify(response.data));
+        this.appStateService.userToken$.next(JSON.stringify(response.data));
+        this.router.navigate(['/home']);
+      }
+    },error => {
+      this._errorAlert.open(error.error.message,"cancel",{
+        horizontalPosition: "end",
+        verticalPosition: "top"
+      });
+      this.appStateService.isLoading$.next(false);
+    })
   }
-
 }
