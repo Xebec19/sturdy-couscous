@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -22,5 +23,11 @@ export class AppStateService {
       map((result) => result.matches),
       shareReplay()
     );
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  showAlert = async(message: string) => { 
+    await this._errorAlert.open(message,"cancel",{
+      horizontalPosition: "end",
+      verticalPosition: "top"
+    })
+  }
+  constructor(private breakpointObserver: BreakpointObserver, private _errorAlert: MatSnackBar) {}
 }

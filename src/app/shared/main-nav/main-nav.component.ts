@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { filter, map, pairwise, shareReplay } from 'rxjs/operators';
-import { NavigationEnd, Router } from '@angular/router';
+import { map, shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { AppStateService } from 'src/app/services/app-state.service';
+import { RequestHandlerService } from 'src/app/services/request-handler.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.scss'],
 })
 export class MainNavComponent {
+  @ViewChild('mobileToolBar', { static: false }) mobileBanner: ElementRef;
+  cartItems = [];
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -23,29 +27,25 @@ export class MainNavComponent {
       map((result) => result.matches),
       shareReplay()
     );
-  isHomePage = false;
-  ngOnInit(): void {
-    this.router.events
-      .pipe(
-        filter((evt) => evt instanceof NavigationEnd),
-        pairwise(),
-        map((v) => ({
-          previous: (v[0] as NavigationEnd).url,
-          current: (v[1] as NavigationEnd).url,
-        }))
-      )
-      .subscribe((routeInfo) => {
-        if (routeInfo.current.includes('home')) {
-          this.isHomePage = true;
-        } else {
-          this.isHomePage = false;
-        }
-      });
-  }
+  ngOnInit(): void {}
+
+  logout = async () => {
+    this.requestService.getRequest('/public/logout').subscribe(
+      (response: any) => {
+        localStorage.clear();
+        this.appStateService.userToken$.next('');
+      },
+      (error) => {
+        this.appStateService.showAlert(error.error.message);
+      }
+    );
+  };
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router,
-    public appStateService: AppStateService
+    public appStateService: AppStateService,
+    private requestService: RequestHandlerService,
+    public shoppingCartService: ShoppingCartService
   ) {}
 }

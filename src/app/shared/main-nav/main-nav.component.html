@@ -12,7 +12,7 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/']">Home</a>
-      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item *ngIf="this.appStateService.userToken$| async" (click)="logout()"  >Logout</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -32,9 +32,8 @@
   >
     <mat-toolbar>Cart</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Item 1</a>
-      <a mat-list-item href="#">Item 2</a>
-      <a mat-list-item href="#">Item 3</a>
+      <a mat-list-item [routerLink]="['/cart/view-cart']">View Cart</a>
+      <a mat-list-item *ngFor="let item of cartItems"></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -48,8 +47,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>frontEnd</span>
-      <!--TODO add a cart route here-->
+      <span #mobileToolBar>frontEnd</span>
       <button
         type="button"
         aria-label="Cart"

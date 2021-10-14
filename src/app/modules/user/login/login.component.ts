@@ -21,9 +21,10 @@ export class LoginComponent implements OnInit {
     // console.log('--form ',this.signInForm.value);
     this.requestService.postRequest('/public/login',this.signInForm.value).subscribe((response:any) => {
       console.log('response : ',response);
-      if(response.status){
-        localStorage.setItem('token',JSON.stringify(response.data));
-        this.appStateService.userToken$.next(JSON.stringify(response.data));
+      if(response.body.status){
+        const token = response.body.data.trim().split(" ")[1];
+        localStorage.setItem('token',token);
+        this.appStateService.userToken$.next(token);
         this.router.navigate(['/home']);
       }
     },error => {

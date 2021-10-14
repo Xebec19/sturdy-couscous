@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
     this.signUpForm.controls.phone.patchValue(+this.signUpForm.controls.phone.value);
     console.log("Sign up form value : ",this.signUpForm.value);
     this.requestService.postRequest('/public/register',this.signUpForm.value).subscribe((response:any) => {
-      console.log('response : ',response);
-      if(response.status){
-        localStorage.setItem('token',JSON.stringify(response.data));
-        this.appStateService.userToken$.next(JSON.stringify(response.data));
+      if(response.body.status){
+        const token = response.body.data.trim().split(" ")[1];
+        localStorage.setItem('token',token);
+        this.appStateService.userToken$.next(token);
         this.router.navigate(['/home']);
       }
     },error => {

@@ -1,9 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Params } from '@angular/router';
-import { interval, Observable, pipe, Subscription } from 'rxjs';
-import { debounce, map, scan, shareReplay } from 'rxjs/operators';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { IProductDetails } from 'src/app/models';
 import { AppStateService } from 'src/app/services/app-state.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
@@ -30,7 +30,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private requestService: RequestHandlerService,
     private appStateService: AppStateService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +44,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       }
     );
     this.getProduct();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
   getProduct() {
     this.requestService
@@ -64,6 +66,44 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         };
       });
   }
+
+  addToCart() {
+    console.log('--cart details : ', {
+      quantity: this.selectedQuantity,
+      productId: this.product.product_id,
+    });
+    const data = {
+      productId: this.product.product_id,
+      qty: this.selectedQuantity,
+    };
+    this.requestService.postRequest('/cart/add_item', data).subscribe(
+      (response) => {
+        if (response.body.status) {
+          this._snackBar.open('Product added to cart', 'Close', {
+            duration: 500,
+          });
+        } else {
+          this._snackBar.open(
+            'Error, product could not be added to cart',
+            'Close',
+            {
+              duration: 500,
+            }
+          );
+        }
+      },
+      (error) => {
+        this._snackBar.open(
+          'Error, product could not be added to cart',
+          'Close',
+          {
+            duration: 500,
+          }
+        );
+      }
+    );
+  }
+
   openSnackBar() {
     this._snackBar.open('sorry, no more quantity available', 'Close', {
       duration: 5000,
