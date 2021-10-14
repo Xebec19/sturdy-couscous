@@ -1,28 +1,91 @@
-<div *ngIf="!isMobile;else mobileTemplate">
-
-</div>
+<div *ngIf="!isMobile; else mobileTemplate"></div>
 
 <ng-template #mobileTemplate>
-    <div class="view-cart-mobile">
-        <div class="view-cart-mobile__title-container">
-            <span class="view-cart-mobile__title-container__text">
-                Your Cart
-            </span>
-            <span class="view-cart-mobile__title-container__badge">
-                ({{cartItems?.length}})
-            </span>
-        </div>
-        <div class="view-cart-mobile__cart-items-empty" *ngIf="!!!cartItems.length">
-            <img class="view-cart-mobile__cart-items-empty__img" src="https://firebasestorage.googleapis.com/v0/b/bazaa-9913b.appspot.com/o/undraw_empty_cart_co35.svg?alt=media&token=36f8d55f-0f9c-445c-8ed3-879ce85b5aaf" alt="empty cart"/>
-            <!--todo add route to shop page-->
-            <p class="view-cart-mobile__cart-items-empty__link">Continue shopping</p>
-        </div>
-        <div class="view-cart-mobile__cart-items-fill" *ngIf="cartItems.length">
-            <mat-list role="list">
-                <mat-list-item *ngFor="let item of cartItems" 
-                class="row" role="listitem"><span class="col-6">{{item.product_name}}</span><span class="col-6">{{item.product_price}}&nbsp;X&nbsp;{{item.quantity}}units</span></mat-list-item>
-              </mat-list>
-              
-        </div>
+  <div class="view-cart-mobile">
+    <div class="view-cart-mobile__title-container">
+      <span class="view-cart-mobile__title-container__text"> Your Cart </span>
     </div>
+    <div class="view-cart-mobile__cart-items-empty" *ngIf="!!!cartItems.length">
+      <img
+        class="view-cart-mobile__cart-items-empty__img"
+        src="https://firebasestorage.googleapis.com/v0/b/bazaa-9913b.appspot.com/o/undraw_empty_cart_co35.svg?alt=media&token=36f8d55f-0f9c-445c-8ed3-879ce85b5aaf"
+        alt="empty cart"
+      />
+      <!--todo add route to shop page-->
+      <p class="view-cart-mobile__cart-items-empty__link">Continue shopping</p>
+    </div>
+    <div class="view-cart-mobile__cart-items-fill" *ngIf="cartItems.length">
+      <mat-list role="list">
+        <mat-list-item
+          *ngFor="let item of cartItems"
+          class="row"
+          role="listitem"
+          ><span
+            class="col-5 text-primary"
+            [routerLink]="['/product/' + item.product_id]"
+            >{{ item.product_name }}</span
+          ><span class="col-3 view-cart-mobile__cart-items-fill__price"
+            >{{ item.product_price }}&nbsp;X&nbsp;{{
+              item.quantity
+            }}&nbsp;units</span
+          >
+          <!-- <span class="col-3 view-cart-mobile__cart-items-fill__edit"
+            ><mat-icon
+            color="accent"
+              
+              >edit</mat-icon
+            ></span
+          > -->
+          <span class="col-4 view-cart-mobile__cart-items-fill__actions"
+            >
+            <mat-icon
+              color="accent"
+              (click)="
+                editCartItem({
+                  cartDetailsId: item.cd_id,
+                  cartId: item.cart_id,
+                  productName: item.product_name,
+                  productImage: item.product_image,
+                  price: item.product_price,
+                  quantity: item.quantity-1,
+                  operation: 'edit'
+                })
+              "
+              >remove</mat-icon
+            >&nbsp;
+            <mat-icon
+              color="accent"
+              (click)="
+                editCartItem({
+                  cartDetailsId: item.cd_id,
+                  cartId: item.cart_id,
+                  productName: item.product_name,
+                  productImage: item.product_image,
+                  price: item.product_price,
+                  quantity: item.quantity+1,
+                  operation: 'edit'
+                })
+              "
+              >add</mat-icon
+            >&nbsp;<mat-icon
+              color="accent"
+              (click)="
+                removeItem({
+                  cartDetailsId: item.cd_id,
+                  cartId: item.cart_id,
+                  productName: item.product_name,
+                  productImage: item.product_image,
+                  price: item.product_price,
+                  quantity: item.quantity,
+                  action: false,
+                  operation: 'delete'
+                })
+              "
+              >close</mat-icon
+            ></span
+          ></mat-list-item
+        >
+      </mat-list>
+    </div>
+  </div>
 </ng-template>

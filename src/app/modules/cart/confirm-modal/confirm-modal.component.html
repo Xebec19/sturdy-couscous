@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title
+      >Are you sure you want to remove this item from cart ?</mat-card-title
+    >
+    <mat-card-subtitle>{{ data.productName }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="data.productImage" [alt]="data.productName">
+  <mat-card-content>
+      <div class="confirm-modal__price-and-quantity">
+      <span>Price : {{data.price}}</span>
+      <span>Quantity : {{data.quantity}}</span>
+    </div>
+  <mat-card-actions align="end">
+    <button mat-button [mat-dialog-close]="true">confirm</button>
+    <button mat-button (click)="onConfirm()">cancel</button>
+  </mat-card-actions>
+</mat-card-content>
+</mat-card>
