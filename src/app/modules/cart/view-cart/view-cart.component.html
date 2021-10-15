@@ -15,28 +15,20 @@
       <p class="view-cart-mobile__cart-items-empty__link">Continue shopping</p>
     </div>
     <div class="view-cart-mobile__cart-items-fill" *ngIf="cartItems.length">
-      <mat-list role="list">
-        <mat-list-item
-          *ngFor="let item of cartItems"
-          class="row"
-          role="listitem"
-          ><span
-            class="col-5 text-primary"
-            [routerLink]="['/product/' + item.product_id]"
-            >{{ item.product_name }}</span
-          ><span class="col-3 view-cart-mobile__cart-items-fill__price"
-            >{{ item.product_price }}&nbsp;X&nbsp;{{
+      <div *ngFor="let item of cartItems">
+        <div
+          class="text-primary"
+          [routerLink]="['/product/' + item.product_id]"
+        >
+          {{ item.product_name }}
+        </div>
+        <div class="row">
+          <span class="col-6 view-cart-mobile__cart-items-fill__price"
+            >{{ priceSymbol }}&nbsp;{{ item.product_price }}&nbsp;X&nbsp;{{
               item.quantity
             }}&nbsp;units</span
           >
-          <!-- <span class="col-3 view-cart-mobile__cart-items-fill__edit"
-            ><mat-icon
-            color="accent"
-              
-              >edit</mat-icon
-            ></span
-          > -->
-          <span class="col-4 view-cart-mobile__cart-items-fill__actions">
+          <span class="col-6 view-cart-mobile__cart-items-fill__actions">
             <mat-icon
               color="accent"
               (click)="
@@ -82,10 +74,23 @@
               "
               >close</mat-icon
             ></span
-          ></mat-list-item
-        >
-      </mat-list>
+          >
+        </div>
+      </div>
     </div>
   </div>
+  <mat-divider></mat-divider>
+  <app-cart-summary></app-cart-summary>
+  <mat-divider></mat-divider>
   <app-billing-address></app-billing-address>
+  <mat-divider></mat-divider>
+  <section class="view-cart-mobile__check-box">
+    <mat-checkbox class="example-margin" color="primary"
+      >Shipping Address is same as my billing address</mat-checkbox
+    >
+    <mat-checkbox class="example-margin" color="primary"
+      >Save this information for next time</mat-checkbox
+    >
+  </section>
+  <mat-divider></mat-divider>
 </ng-template>

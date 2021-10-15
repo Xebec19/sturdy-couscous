@@ -39,12 +39,28 @@ mat-list-item {
   justify-content: space-between;
 }
 
-.mat-list {
-  margin: 0px;
-  padding: 0px;
-}
-
-.view-cart-mobile__cart-items-fill__price,
 .view-cart-mobile__cart-items-fill__actions {
   text-align: end;
+}
+
+.mat-list-base{
+  padding-top: 0px;
+}
+
+.mat-divider{
+  margin: 15px 15px 0px 15px;
+}
+
+.view-cart-mobile__check-box{
+  padding: 15px 15px 0px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+app-billing-address{
+  padding-bottom: 15px;
+}
+
+mat-checkbox{
+  margin-bottom: 15px;
 }

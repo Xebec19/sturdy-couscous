@@ -7,11 +7,13 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { BillingAddressComponent } from './billing-address/billing-address.component';
 import { CheckoutService } from './checkout.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 @NgModule({
   declarations: [
     ViewCartComponent,
     ConfirmModalComponent,
-    BillingAddressComponent
+    BillingAddressComponent,
+    CartSummaryComponent
   ],
   imports: [
     CommonModule,

@@ -20,6 +20,8 @@ export class ViewCartComponent implements OnInit {
   cartItems: any = [];
   deviceTypeSub: Subscription;
   cartItemsSub: Subscription;
+  priceSymbolSub: Subscription;
+  priceSymbol: string;
   constructor(
     private appStateService: AppStateService,
     private shoppingCart: ShoppingCartService,
@@ -36,6 +38,9 @@ export class ViewCartComponent implements OnInit {
       this.cartItems = val.cartItems;
       console.log('--cart items ', this.cartItems);
     });
+    this.priceSymbolSub = this.appStateService.priceSymbol$.subscribe(val => {
+      this.priceSymbol = val;
+    })
   }
   ngOnDestroy(): void {
     this.deviceTypeSub.unsubscribe();

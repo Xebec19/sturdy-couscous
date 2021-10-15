@@ -1,0 +1,19 @@
+<section class="cart-summary__container">
+  <div class="cart-summary__title">Cart Summary</div>
+  <div class="cart-summary__body">
+    <mat-list role="list" class="row">
+      <mat-list-item role="listitem">
+        <span class="col-6">Price : </span>
+        <span class="col-6 cart-summary__amount">{{priceSymbol}}&nbsp;{{ cartSummary?.price }}</span>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <span class="col-6">Delivery Price : </span>
+        <span class="col-6 cart-summary__amount">{{priceSymbol}}&nbsp;{{ cartSummary?.delivery_price }}</span>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <span class="col-6">Total : </span>
+        <span class="col-6 cart-summary__amount">{{priceSymbol}}&nbsp;{{ cartSummary?.total }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</section>
