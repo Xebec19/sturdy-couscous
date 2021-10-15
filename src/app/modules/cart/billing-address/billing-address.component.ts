@@ -7,18 +7,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./billing-address.component.scss']
 })
 export class BillingAddressComponent implements OnInit {
-
+  isSubmitted = false;
+  country = 'India';
+  state = 'Delhi';
+  billingAddressForm: FormGroup;
   constructor() { }
 
   ngOnInit(): void {
-    const billingAddressForm = new FormGroup({
+    this.billingAddressForm = new FormGroup({
       firstName : new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z ]*")]),
       lastName : new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z ]*")]),
       email : new FormControl("",[Validators.email]),
       address : new FormControl("",[Validators.required]),
-      country : new FormControl("India")
-
+      country : new FormControl(this.country,[Validators.required]),
+      state :  new FormControl(this.state,[Validators.required]),
+      postalCode : new FormControl("",[Validators.required,Validators.pattern("[0-9]*")])
     })
+  }
+
+  onSubmit(){
+    this.isSubmitted = true;
+    console.log("--billing address : ",this.billingAddressForm);
   }
 
 }
