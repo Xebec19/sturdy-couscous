@@ -36,8 +36,7 @@
               >edit</mat-icon
             ></span
           > -->
-          <span class="col-4 view-cart-mobile__cart-items-fill__actions"
-            >
+          <span class="col-4 view-cart-mobile__cart-items-fill__actions">
             <mat-icon
               color="accent"
               (click)="
@@ -47,7 +46,7 @@
                   productName: item.product_name,
                   productImage: item.product_image,
                   price: item.product_price,
-                  quantity: item.quantity-1,
+                  quantity: item.quantity - 1,
                   operation: 'edit'
                 })
               "
@@ -62,7 +61,7 @@
                   productName: item.product_name,
                   productImage: item.product_image,
                   price: item.product_price,
-                  quantity: item.quantity+1,
+                  quantity: item.quantity + 1,
                   operation: 'edit'
                 })
               "
@@ -88,4 +87,5 @@
       </mat-list>
     </div>
   </div>
+  <app-billing-address></app-billing-address>
 </ng-template>

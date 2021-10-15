@@ -1,5 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { ICartConfirmModal } from 'src/app/models/cart.confirm-modal';
 @Component({
   selector: 'app-confirm-modal',
@@ -14,7 +18,7 @@ export class ConfirmModalComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onConfirm(){
+  onConfirm() {
     this.dialogRef.close();
   }
 }
