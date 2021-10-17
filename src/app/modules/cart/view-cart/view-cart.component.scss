@@ -1,3 +1,4 @@
+
 .view-cart-mobile {
   overflow-x: hidden;
   padding: 30px 15px 0px 15px;
@@ -63,4 +64,10 @@ app-billing-address{
 
 mat-checkbox{
   margin-bottom: 15px;
+}
+
+.view-cart-mobile__payment-btn{
+  overflow-x: hidden;
+  width: 100%;
+  margin-top: 15px;
 }

@@ -10,6 +10,7 @@ import {
 } from '@angular/material/dialog';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
+import { CheckoutService } from '../checkout.service';
 @Component({
   selector: 'app-view-cart',
   templateUrl: './view-cart.component.html',
@@ -26,7 +27,8 @@ export class ViewCartComponent implements OnInit {
     private appStateService: AppStateService,
     private shoppingCart: ShoppingCartService,
     public dialog: MatDialog,
-    private requestService: RequestHandlerService
+    private requestService: RequestHandlerService,
+    private checkoutService: CheckoutService
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +38,6 @@ export class ViewCartComponent implements OnInit {
     this.shoppingCart.readCart();
     this.cartItemsSub = this.shoppingCart.shoppingCart.subscribe((val) => {
       this.cartItems = val.cartItems;
-      console.log('--cart items ', this.cartItems);
     });
     this.priceSymbolSub = this.appStateService.priceSymbol$.subscribe(val => {
       this.priceSymbol = val;
@@ -45,10 +46,10 @@ export class ViewCartComponent implements OnInit {
   ngOnDestroy(): void {
     this.deviceTypeSub.unsubscribe();
     this.cartItemsSub.unsubscribe();
+    this.priceSymbolSub.unsubscribe();
   }
 
   removeItem(data: ICartConfirmModal) {
-    console.log(data);
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       width: '100%',
       data,
@@ -58,9 +59,7 @@ export class ViewCartComponent implements OnInit {
       if (!result) {
         result = false;
       }
-      console.log('The dialog was closed');
       data.action = result;
-      console.log('--data from modal : ', data);
       if (data.action) {
         const payload = {
           cartDetailsId: +data.cartDetailsId,
@@ -96,5 +95,8 @@ export class ViewCartComponent implements OnInit {
         this.appStateService.showAlert(error.error.message);
       }
     );
+  }
+  onPayment(){
+    this.checkoutService.makePayment();
   }
 }
