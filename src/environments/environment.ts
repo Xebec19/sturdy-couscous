@@ -5,9 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:3001',
-  BamboraMerchantId : '300212599',
-  //BamboraAccessPasscode : 'B4BB76AC-827A-4FAD-8685-BF609B17'
-  BamboraAccessPasscode :"01c23f7C8e264E32805919f6bd9438CB"
+  RAZORPAY_KEY: 'rzp_test_7YGoqpPKpwsgQx'
 };
 
 /*

@@ -23,6 +23,7 @@ export class ViewCartComponent implements OnInit {
   cartItemsSub: Subscription;
   priceSymbolSub: Subscription;
   priceSymbol: string;
+  totalAmount: Number;
   constructor(
     private appStateService: AppStateService,
     private shoppingCart: ShoppingCartService,
@@ -38,6 +39,7 @@ export class ViewCartComponent implements OnInit {
     this.shoppingCart.readCart();
     this.cartItemsSub = this.shoppingCart.shoppingCart.subscribe((val) => {
       this.cartItems = val.cartItems;
+      this.totalAmount = +val.cartSummary.total;
     });
     this.priceSymbolSub = this.appStateService.priceSymbol$.subscribe(val => {
       this.priceSymbol = val;
@@ -97,6 +99,6 @@ export class ViewCartComponent implements OnInit {
     );
   }
   onPayment(){
-    this.checkoutService.makePayment();
+    this.checkoutService.makePayment(this.totalAmount);
   }
 }

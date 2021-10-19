@@ -19,6 +19,7 @@ export class CartSummaryComponent implements OnInit {
   ngOnInit(): void {
     this.cartSummarySubs = this.shoppingCartService.shoppingCart.subscribe((val) => {
       this.cartSummary = val.cartSummary;
+      console.log('cart Summary : ',this.cartSummary);
     })
     this.priceSymbolSubs = this.appStateService.priceSymbol$.subscribe(val => {
       this.priceSymbol = val;
@@ -27,5 +28,6 @@ export class CartSummaryComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.cartSummarySubs.unsubscribe();
+    this.priceSymbolSubs.unsubscribe();
   }
 }
