@@ -29,7 +29,7 @@ export class ViewCartComponent implements OnInit {
     private shoppingCart: ShoppingCartService,
     public dialog: MatDialog,
     private requestService: RequestHandlerService,
-    private checkoutService: CheckoutService
+    public checkoutService: CheckoutService
   ) {}
 
   ngOnInit(): void {

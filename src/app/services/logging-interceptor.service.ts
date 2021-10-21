@@ -19,10 +19,10 @@ export class LoggingInterceptorService implements HttpInterceptor {
     this.appStateService.isLoading$.next(true);
     return next.handle(req).pipe(
       tap((event) => {
+        this.appStateService.isLoading$.next(false);
         if (event.type === HttpEventType.Response) {
-          this.appStateService.isLoading$.next(false);
-          console.log('Incoming response');
-          console.log(event.body);
+          // console.log('Incoming response');
+          // console.log(event.body); // use it only for debugging
         }
       })
     );

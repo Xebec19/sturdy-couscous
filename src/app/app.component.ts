@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'Bazaar';
   token = '';
   constructor(
-    private appStateService: AppStateService,
+    public appStateService: AppStateService,
     private shoppingCart: ShoppingCartService
   ) {}
   ngOnInit(): void {

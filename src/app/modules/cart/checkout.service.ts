@@ -25,16 +25,16 @@ export class CheckoutService {
 
   setShippingDetails(address: string, email?: string) {
     this.shippingAddress.next(address.trim());
-    localStorage.setItem('shippingAddress', address);
-    if (email) {
-      this.shippingEmail.next(email);
-      localStorage.setItem('shippingEmail', email);
-    }
+    this.shippingEmail.next(email);
   }
 
   makePayment = async (amount: Number) => {
     console.log('payment started');
     console.log('Amount : ', amount);
+    if(!!!this.shippingAddress.getValue()){
+      this.appStateService.showAlert('Invalid address');
+      return;
+    }
     if (!!!amount) {
       this.appStateService.showAlert('Amount is required');
     }
@@ -53,7 +53,12 @@ export class CheckoutService {
             description: 'Test Transaction',
             image: 'https://example.com/your_logo',
             order_id: res.id,
-            handler: (response) => this.generateOrder(response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature),
+            handler: (response) =>
+              this.generateOrder(
+                response.razorpay_payment_id,
+                response.razorpay_order_id,
+                response.razorpay_signature
+              ),
             prefill: {
               name: '',
               email: '',
@@ -73,17 +78,24 @@ export class CheckoutService {
       });
   };
 
-  generateOrder = (razorpay_payment_id, razorpay_order_id, razorpay_signature) => {
+  generateOrder = (
+    razorpay_payment_id,
+    razorpay_order_id,
+    razorpay_signature
+  ) => {
     // console.log(razorpay_order_id,razorpay_signature,razorpay_payment_id);
     const payload = {
       razorpay_payment_id,
       razorpay_order_id,
       razorpay_signature,
-    }
-    this.requestService.postRequest('/order/checkout',payload).pipe(map(res => res.body)).subscribe(res => {
-      if(res.status){
-        this.router.navigate(['home']);
-      }else this.appStateService.showAlert('Payment failed');
-    })
+    };
+    this.requestService
+      .postRequest('/order/checkout', payload)
+      .pipe(map((res) => res.body))
+      .subscribe((res) => {
+        if (res.status) {
+          this.router.navigate(['home']);
+        } else this.appStateService.showAlert('Payment failed');
+      });
   };
 }

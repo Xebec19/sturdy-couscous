@@ -82,6 +82,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           this._snackBar.open('Product added to cart', 'Close', {
             duration: 500,
           });
+          this.selectedQuantity = 0;
+          this.product.quantity = response.body.data;
         } else {
           this._snackBar.open(
             'Error, product could not be added to cart',

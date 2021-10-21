@@ -19,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
+    canActivate:[CheckTokenService],
     loadChildren: () => 
     import('./modules/cart/cart.module').then((m) => m.CartModule)
   },

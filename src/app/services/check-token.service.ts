@@ -33,7 +33,7 @@ export class CheckTokenService implements CanActivate {
           if (isAuth) {
             return true;
           }
-          return this.router.createUrlTree(['/home']);
+          return this.router.createUrlTree(['/user/login']);
         })
         // tap(isAuth => {
         //   if (!isAuth) {

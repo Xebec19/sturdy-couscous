@@ -82,18 +82,18 @@
   </div>
   <mat-divider></mat-divider>
   <app-cart-summary></app-cart-summary>
-  <mat-divider></mat-divider>
-  <app-billing-address></app-billing-address>
-  <mat-divider></mat-divider>
-  <section class="view-cart-mobile__check-box">
+  <mat-divider *ngIf="cartItems.length"></mat-divider>
+  <app-billing-address *ngIf="cartItems.length"></app-billing-address>
+  <mat-divider *ngIf="cartItems.length"></mat-divider>
+  <section class="view-cart-mobile__check-box" *ngIf="cartItems.length">
     <mat-checkbox class="example-margin" color="primary"
       >Shipping Address is same as my billing address</mat-checkbox
     >
     <mat-checkbox class="example-margin" color="primary"
       >Save this information for next time</mat-checkbox
     >
-    <button mat-raised-button color='primary' class='view-cart-mobile__payment-btn' (click)="onPayment()">Payment</button>
+    <button mat-raised-button color='primary' class='view-cart-mobile__payment-btn' [disabled]="!!!this.checkoutService.shippingAddress.getValue()" (click)="onPayment()">Payment</button>
   </section>
-  <mat-divider></mat-divider>
+  <mat-divider *ngIf="cartItems.length"></mat-divider>
 </ng-template>
 

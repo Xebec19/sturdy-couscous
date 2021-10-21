@@ -41,7 +41,7 @@
         <span
           *ngIf="
             this.billingAddressForm.controls.lastName.errors?.required &&
-            (isSubmitted || this.billingAddressForm.controls.touched)
+            (isSubmitted || this.billingAddressForm.controls.lastName.touched)
           "
           class="billing_address__form-error"
           >Last Name is required</span
@@ -71,6 +71,14 @@
           class="billing_address__form-error"
           >Email is invalid</span
         >
+        <span
+        *ngIf="
+          this.billingAddressForm.controls.email.errors?.required &&
+          this.billingAddressForm.controls.email.touched
+        "
+        class="billing_address__form-error"
+        >Email is required</span
+      >
       </mat-hint>
 
       <mat-form-field class="billing_address__form-field" appearance="fill">

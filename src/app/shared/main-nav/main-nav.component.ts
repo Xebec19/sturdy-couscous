@@ -34,6 +34,7 @@ export class MainNavComponent {
       (response: any) => {
         localStorage.clear();
         this.appStateService.userToken$.next('');
+        this.router.navigate(['home']);
       },
       (error) => {
         this.appStateService.showAlert(error.error.message);
