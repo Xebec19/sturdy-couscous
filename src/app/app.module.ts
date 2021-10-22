@@ -13,6 +13,8 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { RequestHandlerService } from './services/request-handler.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
   imports: [
@@ -23,6 +25,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     AppStateService,

@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Reference for deleting cache
+
+     "dev:ssr": "ng run frontEnd:serve-ssr",
+     "prerender": "ng run frontEnd:prerender",
+     "deploy_dev": "ng build --env=dev --aot=true --output-hashing=all --extract-css=true && npm run add_date",
+     "deploy_prd": "ng build --prod && npm run add_date",
