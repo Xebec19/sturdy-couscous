@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AppStateService } from 'src/app/services/app-state.service';
+import { LocalStorageService } from 'src/app/services/local-storage-service.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
     phone: new FormControl("",[Validators.minLength(10),Validators.pattern("^(0|[1-9][0-9]*)$")]),
     password: new FormControl("",[Validators.required,Validators.minLength(8)])
   })
-  constructor(private requestService: RequestHandlerService, private appStateService: AppStateService, private router: Router, private _errorAlert:MatSnackBar) { }
+  constructor(private requestService: RequestHandlerService, private appStateService: AppStateService, private router: Router, private _errorAlert:MatSnackBar, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {}
   onSubmit(){
@@ -28,7 +29,8 @@ export class RegisterComponent implements OnInit {
     this.requestService.postRequest('/public/register',this.signUpForm.value).subscribe((response:any) => {
       if(response.body.status){
         const token = response.body.data.trim().split(" ")[1];
-        localStorage.setItem('token',token);
+        // localStorage.setItem('token',token);
+        this.localStorageService.token = token;
         this.appStateService.userToken$.next(token);
         this.router.navigate(['/home']);
       }

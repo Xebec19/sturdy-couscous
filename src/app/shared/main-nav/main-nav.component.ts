@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AppStateService } from 'src/app/services/app-state.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { LocalStorageService } from 'src/app/services/local-storage-service.service';
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
@@ -32,7 +33,8 @@ export class MainNavComponent {
   logout = async () => {
     this.requestService.getRequest('/public/logout').subscribe(
       (response: any) => {
-        localStorage.clear();
+        // localStorage.clear();
+        this.localStorageService.clear();
         this.appStateService.userToken$.next('');
         this.router.navigate(['home']);
       },
@@ -47,6 +49,7 @@ export class MainNavComponent {
     private router: Router,
     public appStateService: AppStateService,
     private requestService: RequestHandlerService,
-    public shoppingCartService: ShoppingCartService
+    public shoppingCartService: ShoppingCartService,
+    private localStorageService: LocalStorageService
   ) {}
 }

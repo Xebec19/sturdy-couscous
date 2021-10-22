@@ -6,7 +6,8 @@ import { AppStateService } from 'src/app/services/app-state.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-declare var Razorpay;
+import { LocalStorageService } from 'src/app/services/local-storage-service.service';
+declare var Razorpay; // Inject this
 @Injectable()
 export class CheckoutService {
   shippingAddress = new BehaviorSubject('');
@@ -15,12 +16,11 @@ export class CheckoutService {
     private shoppingCart: ShoppingCartService,
     private appStateService: AppStateService,
     private requestService: RequestHandlerService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {
-    if (localStorage.getItem('shippingAddress'))
-      this.shippingAddress.next(localStorage.getItem('shippingAddress'));
-    if (localStorage.getItem('shippingEmail'))
-      this.shippingAddress.next(localStorage.getItem('shippingEmail'));
+      this.shippingAddress.next(localStorageService.shippingAddress);
+      this.shippingEmail.next(localStorageService.shippingEmail);
   }
 
   setShippingDetails(address: string, email?: string) {
