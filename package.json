@@ -11,10 +11,10 @@
     "add_date_js": "for i in dist/frontEnd/*; do if [ -f $i ]; then LC_ALL=C sed -i.bak 's:js\":js?'$(date +%H%M%m%d%y)'\":g' $i; fi done",
     "add_date_css": "sed -i.bak 's:css\":css?'$(date +%H%M%m%d%y)'\":g' dist/frontEnd/browser/index.html",
     "rm_bak_files": "find dist/frontEnd/browser -name '*.bak' -exec rm -Rf {} \\;",
-    "compile:server": "webpack --config webpack.server.config.js --progress --colors",
-    "serve:ssr": "node dist/frontEnd/server/main*.js --outputHashing=all && npm run add_date",
+    "compile:server": "webpack --config webpack.server.config.js --progress",
+    "serve:ssr": "node dist/frontEnd/server/main*.js --outputHashing=all",
     "build:ssr": "ng build && npm run add_date && ng run frontEnd:server --outputHashing=all",
-    "build:client-and-server-bundles": "ng build --prod && npm run add_date && ng run frontEnd:server:production  --outputHashing=all"
+    "build:client-and-server-bundles": "ng build --prod && ng run frontEnd:server:production  --outputHashing=all"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +34,7 @@
     "@nguniversal/express-engine": "^12.1.2",
     "bootstrap": "^5.1.1",
     "express": "^4.15.2",
+    "material-design-icons": "^3.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -52,6 +53,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "webpack-cli": "^4.9.1"
   }
 }

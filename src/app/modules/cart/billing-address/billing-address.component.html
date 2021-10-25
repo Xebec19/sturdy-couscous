@@ -144,6 +144,7 @@
           class="billing_address__form-submit"
           mat-raised-button
           color="primary"
+          [disabled]="!this.billingAddressForm.valid"
           (click)="onSubmit()"
         >
           Save

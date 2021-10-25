@@ -51,7 +51,7 @@ export class CheckoutService {
             currency: 'INR',
             name: 'Bazaar',
             description: 'Test Transaction',
-            image: 'https://example.com/your_logo',
+            image: 'https://firebasestorage.googleapis.com/v0/b/bazaar-8537f.appspot.com/o/Bazaar.png?alt=media&token=a1f24bf4-70b4-42db-ab4c-33d22a643e81',
             order_id: res.id,
             handler: (response) =>
               this.generateOrder(
@@ -60,9 +60,9 @@ export class CheckoutService {
                 response.razorpay_signature
               ),
             prefill: {
-              name: '',
-              email: '',
-              contact: '',
+              name: 'Rohan', // todo change it
+              email: 'rohan@gmail.com',
+              contact: '3434343434',
             },
             theme: {
               color: '#3f51b5',
@@ -88,6 +88,8 @@ export class CheckoutService {
       razorpay_payment_id,
       razorpay_order_id,
       razorpay_signature,
+      address: JSON.stringify(this.shippingAddress.getValue()),
+      email: this.shippingEmail.getValue()
     };
     this.requestService
       .postRequest('/order/checkout', payload)

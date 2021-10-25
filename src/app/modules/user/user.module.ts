@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserRoutingModule } from './user-routing.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AllowLoginService } from './allow-login.service';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserRoutingModule,
     MaterialModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers:[AllowLoginService]
 })
 export class UserModule { }
