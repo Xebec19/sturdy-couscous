@@ -23,6 +23,11 @@ const routes: Routes = [
     loadChildren: () => 
     import('./modules/cart/cart.module').then((m) => m.CartModule)
   },
+  {
+    path: 'receipt/:order-id',
+    canActivate:[CheckTokenService],
+    loadChildren: () => import('./modules/order-receipt/order-receipt.module').then((m) => m.OrderReceiptModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 

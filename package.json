@@ -7,14 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "add_date": "npm run add_date_js && npm run add_date_css && npm run rm_bak_files",
-    "add_date_js": "for i in dist/frontEnd/*; do if [ -f $i ]; then LC_ALL=C sed -i.bak 's:js\":js?'$(date +%H%M%m%d%y)'\":g' $i; fi done",
-    "add_date_css": "sed -i.bak 's:css\":css?'$(date +%H%M%m%d%y)'\":g' dist/frontEnd/browser/index.html",
-    "rm_bak_files": "find dist/frontEnd/browser -name '*.bak' -exec rm -Rf {} \\;",
     "compile:server": "webpack --config webpack.server.config.js --progress",
-    "serve:ssr": "node dist/frontEnd/server/main*.js --outputHashing=all",
-    "build:ssr": "ng build && npm run add_date && ng run frontEnd:server --outputHashing=all",
-    "build:client-and-server-bundles": "ng build --prod && ng run frontEnd:server:production  --outputHashing=all"
+    "serve:ssr": "node dist/frontEnd/server/main.js --outputHashing=all",
+    "build:ssr": "ng build && ng run frontEnd:server --outputHashing=all",
+    "start:prod": "ng build --prod && ng run frontEnd:server:production  --outputHashing=all"
   },
   "private": true,
   "dependencies": {

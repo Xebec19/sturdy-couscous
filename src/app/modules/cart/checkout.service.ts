@@ -7,6 +7,7 @@ import { RequestHandlerService } from 'src/app/services/request-handler.service'
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage-service.service';
+import { HttpParams } from '@angular/common/http';
 declare var Razorpay; // Inject this
 @Injectable()
 export class CheckoutService {
@@ -83,7 +84,6 @@ export class CheckoutService {
     razorpay_order_id,
     razorpay_signature
   ) => {
-    // console.log(razorpay_order_id,razorpay_signature,razorpay_payment_id);
     const payload = {
       razorpay_payment_id,
       razorpay_order_id,
@@ -96,7 +96,7 @@ export class CheckoutService {
       .pipe(map((res) => res.body))
       .subscribe((res) => {
         if (res.status) {
-          this.router.navigate(['home']);
+          this.router.navigate([`receipt/${res.data}`]);
         } else this.appStateService.showAlert('Payment failed');
       });
   };

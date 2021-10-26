@@ -34,6 +34,7 @@ export class MainNavComponent {
     this.requestService.getRequest('/public/logout').subscribe(
       (response: any) => {
         // localStorage.clear();
+        
         this.localStorageService.clear();
         this.appStateService.userToken$.next('');
         this.router.navigate(['home']);
