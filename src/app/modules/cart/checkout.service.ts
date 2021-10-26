@@ -7,7 +7,6 @@ import { RequestHandlerService } from 'src/app/services/request-handler.service'
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage-service.service';
-import { HttpParams } from '@angular/common/http';
 declare var Razorpay; // Inject this
 @Injectable()
 export class CheckoutService {
@@ -20,8 +19,8 @@ export class CheckoutService {
     private router: Router,
     private localStorageService: LocalStorageService
   ) {
-      this.shippingAddress.next(localStorageService.shippingAddress);
-      this.shippingEmail.next(localStorageService.shippingEmail);
+    this.shippingAddress.next(localStorageService.shippingAddress);
+    this.shippingEmail.next(localStorageService.shippingEmail);
   }
 
   setShippingDetails(address: string, email?: string) {
@@ -32,7 +31,7 @@ export class CheckoutService {
   makePayment = async (amount: Number) => {
     console.log('payment started');
     console.log('Amount : ', amount);
-    if(!!!this.shippingAddress.getValue()){
+    if (!!!this.shippingAddress.getValue()) {
       this.appStateService.showAlert('Invalid address');
       return;
     }
@@ -45,14 +44,15 @@ export class CheckoutService {
       .subscribe((res) => {
         console.log(res);
         if (res.status === 'created') {
-          console.log('created');
+          // console.log('created');
           var options = {
             key: environment.RAZORPAY_KEY,
             amount: res.amount,
             currency: 'INR',
             name: 'Bazaar',
             description: 'Test Transaction',
-            image: 'https://firebasestorage.googleapis.com/v0/b/bazaar-8537f.appspot.com/o/Bazaar.png?alt=media&token=a1f24bf4-70b4-42db-ab4c-33d22a643e81',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/bazaar-8537f.appspot.com/o/Bazaar.png?alt=media&token=a1f24bf4-70b4-42db-ab4c-33d22a643e81',
             order_id: res.id,
             handler: (response) =>
               this.generateOrder(
@@ -89,14 +89,16 @@ export class CheckoutService {
       razorpay_order_id,
       razorpay_signature,
       address: JSON.stringify(this.shippingAddress.getValue()),
-      email: this.shippingEmail.getValue()
+      email: this.shippingEmail.getValue(),
     };
     this.requestService
       .postRequest('/order/checkout', payload)
       .pipe(map((res) => res.body))
       .subscribe((res) => {
         if (res.status) {
-          this.router.navigate([`receipt/${res.data}`]);
+          this.router.navigate([`receipt`], {
+            queryParams: { orderId: res.data },
+          });
         } else this.appStateService.showAlert('Payment failed');
       });
   };

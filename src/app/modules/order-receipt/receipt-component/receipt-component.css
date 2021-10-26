@@ -1,6 +1,9 @@
 .order-body{
-    padding:30px 15px 0px 15px;
+    padding:25vh 15px 0px 15px;
     text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 img{
     padding:15px;

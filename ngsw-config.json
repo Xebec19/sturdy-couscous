@@ -12,6 +12,9 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/icon?family=Material+Icons"
         ]
       }
     },
@@ -24,6 +27,20 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name":"apis",
+      "urls":[
+        "http://localhost:3001/public/fetchProducts?limit=2"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "50m",
+        "timeout": "10s",
+        "strategy": "freshness"
       }
     }
   ]

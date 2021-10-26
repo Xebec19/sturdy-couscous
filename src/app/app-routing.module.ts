@@ -24,7 +24,7 @@ const routes: Routes = [
     import('./modules/cart/cart.module').then((m) => m.CartModule)
   },
   {
-    path: 'receipt/:order-id',
+    path: 'receipt',
     canActivate:[CheckTokenService],
     loadChildren: () => import('./modules/order-receipt/order-receipt.module').then((m) => m.OrderReceiptModule)
   },
@@ -32,9 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

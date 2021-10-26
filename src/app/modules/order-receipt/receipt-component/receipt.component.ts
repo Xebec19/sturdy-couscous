@@ -11,6 +11,7 @@ export class ReceiptComponent implements OnInit {
   orderIdSubs: Subscription;
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
+    // this.route.routeConfig
     this.orderIdSubs = this.route.params.subscribe((params: Params) => {
       this.orderId = params['order-id'];
     });
