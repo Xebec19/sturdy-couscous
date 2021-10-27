@@ -1,4 +1,4 @@
 <app-main-nav>
   <mat-progress-bar color="accent" mode="indeterminate" *ngIf="this.appStateService.isLoading$ | async"></mat-progress-bar>
-  <router-outlet (activate)="onActivate($event)"></router-outlet>
+  <router-outlet></router-outlet>
 </app-main-nav>

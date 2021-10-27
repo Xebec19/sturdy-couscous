@@ -26,7 +26,11 @@ export class LoginComponent implements OnInit {
     private _errorAlert: MatSnackBar,
     private localStorageService: LocalStorageService
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(!!this.localStorageService.token){
+      this.router.navigate(['/home']);
+    }
+  }
   onSubmit() {
     // console.log('--form ',this.signInForm.value);
     this.requestService

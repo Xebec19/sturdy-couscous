@@ -32,8 +32,8 @@
   >
     <mat-toolbar>Cart</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/cart/view-cart']">View Cart</a>
-      <a mat-list-item *ngFor="let item of cartItems"></a>
+      <a mat-list-item [routerLink]="['/cart/view-cart']">Cart</a>
+      <a mat-list-item [routerLink]="['receipt/123']">Orders</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

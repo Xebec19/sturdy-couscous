@@ -23,13 +23,16 @@ const routes: Routes = [
     loadChildren: () => 
     import('./modules/cart/cart.module').then((m) => m.CartModule)
   },
+  {
+    path: 'receipt',
+    canActivate:[CheckTokenService],
+    loadChildren: () => import('./modules/order-receipt/order-receipt.module').then((m) => m.OrderReceiptModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
