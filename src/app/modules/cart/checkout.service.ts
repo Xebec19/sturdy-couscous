@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector, NgZone } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
@@ -17,7 +17,8 @@ export class CheckoutService {
     private appStateService: AppStateService,
     private requestService: RequestHandlerService,
     private router: Router,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private injector: Injector
   ) {
     this.shippingAddress.next(localStorageService.shippingAddress);
     this.shippingEmail.next(localStorageService.shippingEmail);
@@ -96,9 +97,14 @@ export class CheckoutService {
       .pipe(map((res) => res.body))
       .subscribe((res) => {
         if (res.status) {
-          this.router.navigate([`receipt`], {
-            queryParams: { orderId: res.data },
-          });
+          const ngZone = this.injector.get(NgZone);
+          this.shippingAddress.next('');
+          this.shippingEmail.next('');
+          ngZone.run(() => {
+            this.router.navigate([`receipt`], {
+              queryParams: { orderId: res.data },
+            });
+          })
         } else this.appStateService.showAlert('Payment failed');
       });
   };
