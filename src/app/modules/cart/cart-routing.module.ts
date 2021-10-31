@@ -6,10 +6,10 @@ const routes: Routes = [
         path: 'view-cart',
         component: ViewCartComponent
     },
-    { path: '', redirectTo: 'view-cart', pathMatch: 'full'}
+    { path: '', redirectTo: 'view-cart', pathMatch: 'full' }
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class CartRoutingModule {}
+export class CartRoutingModule { }
