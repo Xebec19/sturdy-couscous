@@ -6,6 +6,7 @@ import { HomeDesktopComponent } from './home-desktop/home-desktop.component';
 import { HomeMobileComponent } from './home-mobile/home-mobile.component';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { CardsModule } from 'src/app/shared/cards/cards.module';
+import { MaterialModule } from 'src/app/shared/material/material.module';
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +21,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     BannerModule,
     CardsModule,
+    MaterialModule
   ],
 })
 export class HomeModule {}
