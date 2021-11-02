@@ -9,9 +9,9 @@ export class CategoriesComponent implements OnInit,OnChanges {
   @Input() categories : {categoryId:number|string,categoryName:string}[]
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
-    for(const change in changes){
-      console.log(change);
-    }
+    // for(const change in changes){
+    //   const propName = change.categories;
+    // }
   }
 
   ngOnInit(): void {
