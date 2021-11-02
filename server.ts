@@ -26,7 +26,7 @@ export function app(): express.Express {
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
-    maxAge: 'oneHour'  // todo does it work
+    maxAge: '1y'
   }));
 
   // All regular routes use the Universal engine

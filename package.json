@@ -8,9 +8,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "compile:server": "webpack --config webpack.server.config.js --progress",
-    "serve:ssr": "node dist/frontEnd/server/main.js --outputHashing=all",
-    "build:ssr": "ng build && ng run frontEnd:server --outputHashing=all",
-    "start:prod": "ng build --prod && ng run frontEnd:server:production  --outputHashing=all"
+    "serve:ssr": "node dist/frontEnd/server/main.js",
+    "build:ssr": "ng build && ng run frontEnd:server",
+    "start:prod": "ng build --prod && ng run frontEnd:server:production  --outputHashing=all",
+    "dev:ssr": "ng run frontEnd:serve-ssr",
+    "prerender": "ng run frontEnd:prerender"
   },
   "private": true,
   "dependencies": {
