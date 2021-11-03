@@ -7,17 +7,22 @@ app-banner {
 app-cards{
   display:flex;
   overflow-x: scroll;
+  scrollbar-color: #c7c7c7 transparent;
+  margin-bottom: 16px;
 }
 h3{
   text-align: center;
   font-size: 1.5rem;
 }
+.whats-new{
+  padding: 0px;
+}
 img{
-    height: auto;
     object-fit: fill;
     overflow: hidden;
     width: 100%;
     border-radius: 4px;
+
 }
 .link-to-shop{
   position: absolute;
@@ -27,4 +32,9 @@ img{
   color:white;
   text-align: center;
   font-size: 1.5rem;
+}
+app-categories{
+  display:flex;
+  overflow-x: scroll;
+  scrollbar-color: #c7c7c7 transparent;
 }

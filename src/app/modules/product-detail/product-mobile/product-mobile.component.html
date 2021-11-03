@@ -1,41 +1,48 @@
-<div *ngIf="product else loading">
-    <img [src]="product?.product_image" [alt]="product?.product_name">
-    <div class="card">
-        <div class="card-body">
-            <div class="card-title">
-                <h3 class='row'>
-                    <span class="col-12 h3">
-                        {{product.product_name}}
-                    </span>
-                    <span class="col-6 text-muted">
-                        Price:&nbsp;&nbsp;{{priceSymbol}}&nbsp;{{product.price}}
-                    </span>
-                    <span class="col-6 text-muted">
-                        Delivery Price:&nbsp;&nbsp;{{priceSymbol}}&nbsp;{{product.delivery_price}}
-                    </span>
-                </h3>
-            </div>
-            <hr class="my-4">
-            <div class="cart-text text-muted">
-                <p class="row">
-                    <span class="col-12">{{product.product_desc}}</span>
-                </p>
-            </div>
-        </div>
+<div *ngIf="product; else loading">
+  <img [src]="product?.product_image" [alt]="product?.product_name" />
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <h3 class="row">
+          <span class="col-12 h3">
+            {{ product.product_name }}
+          </span>
+          <span class="col-6 text-muted">
+            Price:&nbsp;&nbsp;{{ priceSymbol }}&nbsp;{{ product.price }}
+          </span>
+          <span class="col-6 text-muted">
+            Delivery:&nbsp;&nbsp;{{ priceSymbol }}&nbsp;{{
+              product.delivery_price
+            }}
+          </span>
+        </h3>
+      </div>
+      <hr class="my-4" />
+      <div class="cart-text text-muted">
+        <p class="row">
+          <span class="col-12">{{ product.product_desc }}</span>
+        </p>
+      </div>
     </div>
-    <app-cards mode="mobile" class="mt-5"></app-cards>
-    <mat-toolbar *ngIf="product.quantity > 0" color="primary">
-        <span>
-            <mat-icon>remove_circle_outline</mat-icon>
-            &nbsp;
-            <span class="qty">{{this.selectedQuantity}}</span>
-            &nbsp;
-            <mat-icon (click)="updateQuantity('inc')">add_circle_outline</mat-icon>
-        </span>    
-        <mat-icon (click)="addToCart()">add_shopping_cart</mat-icon>
-    </mat-toolbar>
-    <mat-toolbar *ngIf="!(product.quantity > 0)" color="accent"><span class="out-of-stock"><mat-icon>remove_shopping_cart</mat-icon>&nbsp;<p>Out of stock</p></span></mat-toolbar>
+  </div>
+  <app-cards mode="mobile" class="mt-5"></app-cards>
+  <mat-toolbar *ngIf="product.quantity > 0" color="primary">
+    <span>
+      <mat-icon>remove_circle_outline</mat-icon>
+      &nbsp;
+      <span class="qty">{{ this.selectedQuantity }}</span>
+      &nbsp;
+      <mat-icon (click)="updateQuantity('inc')">add_circle_outline</mat-icon>
+    </span>
+    <mat-icon (click)="addToCart()">add_shopping_cart</mat-icon>
+  </mat-toolbar>
+  <mat-toolbar *ngIf="!(product.quantity > 0)" color="accent"
+    ><span class="out-of-stock"
+      ><mat-icon>remove_shopping_cart</mat-icon>&nbsp;
+      <p>Out of stock</p></span
+    ></mat-toolbar
+  >
 </div>
 <ng-template #loading>
-    <app-spinner></app-spinner>
+  <app-spinner></app-spinner>
 </ng-template>

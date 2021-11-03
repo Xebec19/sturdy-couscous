@@ -6,5 +6,6 @@ import { HomeComponent } from '../home.component';
   styleUrls: ['./home-mobile.component.scss'],
 })
 export class HomeMobileComponent extends HomeComponent implements OnInit {
+  
   ngOnInit(): void {}
 }

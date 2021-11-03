@@ -10,8 +10,8 @@ import { RequestHandlerService } from 'src/app/services/request-handler.service'
 })
 export class CardsComponent implements OnInit {
   @Input()
-  mode!: 'mobile' | 'desktop';
-  products!: IProduct[];
+  mode: 'mobile' | 'desktop';
+  products: IProduct[];
   constructor(private requestService: RequestHandlerService) {}
   ngOnInit(): void {
     this.getProducts();
@@ -29,7 +29,6 @@ export class CardsComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.products = response.data;
-          console.log('products are ',this.products);
         },
         (error: any) => {
           console.log(error.message);

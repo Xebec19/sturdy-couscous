@@ -11,6 +11,7 @@ import { RequestHandlerService } from 'src/app/services/request-handler.service'
 })
 export class HomeComponent implements OnInit {
   products: any;
+  categories: any;
   constructor(
     public appStateService: AppStateService,
     private breakpointObserver: BreakpointObserver,
@@ -24,14 +25,15 @@ export class HomeComponent implements OnInit {
     );
     // public/category?includeImg=true
   ngOnInit(): void {}
-  fetchProducts = () => {
-    this.requestService
-    .getRequest('public/category?includeImg=true')
-    .pipe(map((res) => res.body.data))
-    .subscribe((res) => {
-      console.log(res);
-    },(error:any) => {
-
-    });
-  }
+  // fetchProducts = () => {
+  //   this.requestService
+  //   .getRequest('public/category?includeImg=true')
+  //   // .pipe(map((res) => res.body.data))
+  //   .subscribe((res) => {
+  //     console.log(res);
+  //     this.categories = res;
+  //   },(error:any) => {
+  //     console.log('--error ',error);
+  //   });
+  // }
 }
