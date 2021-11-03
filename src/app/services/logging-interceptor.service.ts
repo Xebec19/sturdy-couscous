@@ -21,8 +21,8 @@ export class LoggingInterceptorService implements HttpInterceptor {
       tap((event) => {
         this.appStateService.isLoading$.next(false);
         if (event.type === HttpEventType.Response) {
-          // console.log('Incoming response');
-          // console.log(event.body); // use it only for debugging
+          console.log('Incoming response');
+          console.log(event.body); // use it only for debugging
         }
       })
     );

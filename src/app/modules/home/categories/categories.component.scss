@@ -1,0 +1,18 @@
+.mobile {
+    width: calc(50vw - 10px);
+    margin: 5px;
+  }
+  .mobile mat-card-title {
+    font-size: 15px;
+  }
+  .mobile mat-card {
+    padding: 0px 5px;
+    overflow-x: hidden;
+    margin-right: 5px;
+  }
+  .desktop {
+    width: 400px;
+  }
+  app-spinner{
+    width: 100%;
+  }

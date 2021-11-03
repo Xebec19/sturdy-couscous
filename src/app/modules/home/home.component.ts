@@ -22,5 +22,16 @@ export class HomeComponent implements OnInit {
       map((result) => result.matches),
       shareReplay()
     );
+    // public/category?includeImg=true
   ngOnInit(): void {}
+  fetchProducts = () => {
+    this.requestService
+    .getRequest('public/category?includeImg=true')
+    .pipe(map((res) => res.body.data))
+    .subscribe((res) => {
+      console.log(res);
+    },(error:any) => {
+
+    });
+  }
 }

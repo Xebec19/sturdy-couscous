@@ -8,6 +8,7 @@ import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { CardsModule } from 'src/app/shared/cards/cards.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { CategoriesComponent } from './categories/categories.component';
+import { SpinnerModule } from '../../shared/spinner/spinner.module';
 const routes: Routes = [
   {
     path: '',
@@ -16,13 +17,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, HomeDesktopComponent, HomeMobileComponent, CategoriesComponent],
+  declarations: [
+    HomeComponent,
+    HomeDesktopComponent,
+    HomeMobileComponent,
+    CategoriesComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     BannerModule,
     CardsModule,
-    MaterialModule
+    MaterialModule,
+    SpinnerModule
   ],
 })
 export class HomeModule {}

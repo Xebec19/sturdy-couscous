@@ -1,1 +1,31 @@
-<p>{{categories}}</p>
+<p class="container" *ngFor="let category; in: categories">
+  {{ category.categoryId }}
+</p>
+<p class="container">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem minus odit,
+  ipsa consequuntur id, deleniti ab labore alias officiis, eveniet consequatur
+  maiores asperiores saepe reprehenderit culpa iusto ipsam consectetur
+  accusamus.
+</p>
+<!-- <ng-container *ngIf="categories; else elseBlock">
+  <span *ngFor="let category of categories">
+    <mat-card
+      [ngClass]="mode === 'mobile' ? 'mobile' : 'desktop'"
+    >
+      <img
+        mat-card-image
+        [src]="product.product_image"
+        [alt]="product.product_name"
+      />
+      <mat-card-content>
+        <mat-card-title class="text-wrap">{{
+          product.product_name
+        }}</mat-card-title>
+        <mat-card-subtitle>{{ product.price }}</mat-card-subtitle>
+      </mat-card-content>
+    </mat-card>
+  </span>
+</ng-container>
+<ng-template #elseBlock>
+  <app-spinner></app-spinner>
+</ng-template> -->

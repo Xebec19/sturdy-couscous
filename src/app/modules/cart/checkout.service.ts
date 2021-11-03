@@ -70,7 +70,6 @@ export class CheckoutService {
               color: '#3f51b5',
             },
           };
-          console.log('--options : ', options);
           const rzp = new Razorpay(options);
           rzp.open();
           rzp.on('payment.failed', () => {
