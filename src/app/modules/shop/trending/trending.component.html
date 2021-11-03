@@ -1,0 +1,24 @@
+<ng-container *ngIf="products; else elseBlock">
+    <span *ngFor="let product of products">
+      <mat-card
+        [routerLink]="['/product/' + product.product_id]"
+        [ngClass]="mode === 'mobile' ? 'mobile' : 'desktop'"
+      >
+        <img
+          mat-card-image
+          [src]="product.product_image"
+          [alt]="product.product_name"
+        />
+        <mat-card-content>
+          <mat-card-title class="text-wrap">{{
+            product.product_name.length > 15 ? product.product_name.slice(0,15) + "..." : product.product_name
+          }}</mat-card-title>
+          <mat-card-subtitle>{{ product.price }}</mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </span>
+  </ng-container>
+  <ng-template #elseBlock>
+    <app-spinner></app-spinner>
+  </ng-template>
+  

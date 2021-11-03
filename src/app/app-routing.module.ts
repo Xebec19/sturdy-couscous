@@ -28,6 +28,10 @@ const routes: Routes = [
     canActivate:[CheckTokenService],
     loadChildren: () => import('./modules/order-receipt/order-receipt.module').then((m) => m.OrderReceiptModule)
   },
+  {
+    path: 'shop',
+    loadChildren: () => import('./modules/shop/shop.module').then((m) => m.ShopModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 

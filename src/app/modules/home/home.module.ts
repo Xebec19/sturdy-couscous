@@ -9,6 +9,7 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { SpinnerModule } from '../../shared/spinner/spinner.module';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +23,7 @@ const routes: Routes = [
     HomeDesktopComponent,
     HomeMobileComponent,
     CategoriesComponent,
+    TermsAndConditionsComponent,
   ],
   imports: [
     CommonModule,
