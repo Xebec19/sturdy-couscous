@@ -1,21 +1,21 @@
 export interface ICartDetails {
-  cartSummary: CartSummary;
-  cartItems?: CartItemsEntity[] | null;
+  cartSummary: ICartSummary;
+  cartItems?: ICartItemsEntity[] | null;
 }
-export interface CartSummary {
+export interface ICartSummary {
   cart_id: number;
   user_id: number;
-  price: string;
-  delivery_price: string;
+  price: number;
+  delivery_price: number;
   created_on: string;
   updated_on: string;
-  total: string;
+  total: number;
 }
-export interface CartItemsEntity {
+export interface ICartItemsEntity {
   cd_id: number;
   cart_id: number;
   product_id: number;
-  product_price: string;
+  product_price: number;
   quantity: number;
-  delivery_price: string;
+  delivery_price: number;
 }

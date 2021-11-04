@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CartSummary } from 'src/app/models';
+import { ICartSummary } from 'src/app/models';
 import { AppStateService } from 'src/app/services/app-state.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
@@ -12,14 +12,13 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 export class CartSummaryComponent implements OnInit {
   cartSummarySubs: Subscription;
   priceSymbolSubs: Subscription;
-  cartSummary: CartSummary;
+  cartSummary: ICartSummary;
   priceSymbol: string;
   constructor(private shoppingCartService: ShoppingCartService, private appStateService: AppStateService) {}
 
   ngOnInit(): void {
     this.cartSummarySubs = this.shoppingCartService.shoppingCart.subscribe((val) => {
       this.cartSummary = val.cartSummary;
-      console.log('cart Summary : ',this.cartSummary);
     })
     this.priceSymbolSubs = this.appStateService.priceSymbol$.subscribe(val => {
       this.priceSymbol = val;
