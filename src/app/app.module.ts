@@ -15,6 +15,8 @@ import { RequestHandlerService } from './services/request-handler.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
   imports: [
@@ -25,12 +27,15 @@ import { environment } from '../environments/environment';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({}),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     AppStateService,
