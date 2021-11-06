@@ -32,12 +32,10 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmit() {
-    // console.log('--form ',this.signInForm.value);
     this.requestService
       .postRequest('/public/login', this.signInForm.value)
       .subscribe(
         (response: any) => {
-          console.log('response : ', response);
           if (response.body.status) {
             const token = response.body.data.trim().split(' ')[1];
             this.localStorageService.token = token;

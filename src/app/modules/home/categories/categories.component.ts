@@ -18,9 +18,6 @@ export class CategoriesComponent implements OnInit{
       .subscribe(
         (response: any) => {
           this.categories = response.data;
-        },
-        (error: any) => {
-          console.log(error.message);
         }
       );
   }

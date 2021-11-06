@@ -15,7 +15,6 @@ export class ShoppingCartService {
     this.requestService.getRequest('/cart/read_cart').subscribe((response:any) => {
       if(response.status){
         this.shoppingCart.next(response.data);
-        console.log('--cart items ',response.data);
       }
     },(error) => {
       this.appStateService.isLoading$.next(false);

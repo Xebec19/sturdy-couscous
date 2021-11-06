@@ -30,8 +30,6 @@ export class CheckoutService {
   }
 
   makePayment = async (amount: Number) => {
-    console.log('payment started');
-    console.log('Amount : ', amount);
     if (!!!this.shippingAddress.getValue()) {
       this.appStateService.showAlert('Invalid address');
       return;
@@ -43,9 +41,7 @@ export class CheckoutService {
       .postRequest('/order/create_order', { amount })
       .pipe(map((res) => res.body.data))
       .subscribe((res) => {
-        console.log(res);
         if (res.status === 'created') {
-          // console.log('created');
           var options = {
             key: environment.RAZORPAY_KEY,
             amount: res.amount,
