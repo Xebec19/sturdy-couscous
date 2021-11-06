@@ -17,7 +17,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ProductsEffects } from './modules/shop/store/shop.effects';
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
   imports: [
@@ -35,7 +34,7 @@ import { ProductsEffects } from './modules/shop/store/shop.effects';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     AppStateService,
