@@ -9,20 +9,24 @@ import { PriceComponent } from './price/price.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SpinnerModule } from '../../shared/spinner/spinner.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { InfiniteProductsComponent } from './infinite-products/infinite-products.component';
 @NgModule({
   declarations: [
     ShopAllComponent,
     ShopFilterComponent,
     CardComponent,
     CategoryComponent,
-    PriceComponent
+    PriceComponent,
+    InfiniteProductsComponent
   ],
   imports: [
     CommonModule,
     ShopRoutingModule,
     MaterialModule,
     SpinnerModule,
-    PipesModule
+    PipesModule,
+    InfiniteScrollModule,
   ]
 })
 export class ShopModule { }

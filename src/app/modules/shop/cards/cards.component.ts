@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { stringify } from 'querystring';
 import { map } from 'rxjs/operators';
 import { IProduct } from 'src/app/models/product.model';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';

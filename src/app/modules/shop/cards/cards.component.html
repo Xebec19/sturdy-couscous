@@ -2,7 +2,7 @@
     <span *ngFor="let product of products">
       <mat-card
         [routerLink]="['/product/' + product.product_id]"
-        [ngClass]="mode === 'mobile' ? 'mobile' : 'desktop'"
+        [ngClass]="mode === 'mobile' ? 'mobile' : 'column'"
       >
         <img
           mat-card-image

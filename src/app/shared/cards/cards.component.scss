@@ -10,8 +10,12 @@
   overflow-x: hidden;
   margin-left: 5px;
 }
-.desktop {
+.column {
   width: 400px;
+  margin-bottom: 16px;
+}
+.column img{
+  height: auto;
 }
 app-spinner{
   width: 100%;
