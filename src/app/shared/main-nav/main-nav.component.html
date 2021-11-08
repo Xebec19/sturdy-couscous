@@ -16,7 +16,7 @@
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav
+  <!-- <mat-sidenav
     #cartdrawer
     position="end"
     class="cart-sidenav"
@@ -35,7 +35,7 @@
       <a mat-list-item [routerLink]="['/cart/view-cart']">Cart</a>
       <a mat-list-item [routerLink]="['receipt/123']">Orders</a>
     </mat-nav-list>
-  </mat-sidenav>
+  </mat-sidenav> -->
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
@@ -52,11 +52,10 @@
         type="button"
         aria-label="Cart"
         mat-icon-button
-        (click)="cartdrawer.toggle()"
+        [routerLink]="['/cart/view-cart']"
         *ngIf="isHandset$ && this.appStateService.userToken$ | async"
       >
-        <mat-icon aria-hidden="false" aria-label="cart icon" 
-        matBadge="15" matBadgeColor="accent"
+        <mat-icon aria-hidden="false" aria-label="cart icon" matBadgeColor="accent"
           >shopping_cart</mat-icon
         >
       </button>
