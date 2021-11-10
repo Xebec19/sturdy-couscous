@@ -1,7 +1,7 @@
 <ng-container *ngIf="categories; else elseBlock">
   <span *ngFor="let category of categories">
+    <a [routerLink]="['/shop/filter']" [queryParams]="{categoryId:category.category_id}">
     <mat-card
-      
       [ngClass]="mode === 'mobile' ? 'mobile' : 'column'"
     >
       <img
@@ -15,6 +15,7 @@
         }}</mat-card-title>
       </mat-card-content>
     </mat-card>
+  </a>
   </span>
 </ng-container>
 <ng-template #elseBlock>

@@ -3,7 +3,7 @@
   <mat-sidenav
     #drawer
     class="sidenav"
-    [ngClass]="{ hidden: !(isHandset$ | async) && !(isXL$ | async) }"
+    [ngClass]="{ hidden: !(isHandset$ | async) }"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -16,26 +16,6 @@
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
-  <!-- <mat-sidenav
-    #cartdrawer
-    position="end"
-    class="cart-sidenav"
-    [ngClass]="{
-      hidden: !(isHandset$ | async) && !(isXL$ | async),
-      'cart-sidenav-mobile': (isHandset$ | async),
-      'cart-sidenav-desktop': (isXL$ | async)
-    }"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>Cart</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="['/cart/view-cart']">Cart</a>
-      <a mat-list-item [routerLink]="['receipt/123']">Orders</a>
-    </mat-nav-list>
-  </mat-sidenav> -->
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
