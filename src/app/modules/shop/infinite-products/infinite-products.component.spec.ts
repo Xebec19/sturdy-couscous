@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategoryComponent } from './category.component';
+import { InfiniteProductsComponent } from './infinite-products.component';
 
-describe('CategoryComponent', () => {
-  let component: CategoryComponent;
-  let fixture: ComponentFixture<CategoryComponent>;
+describe('InfiniteProductsComponent', () => {
+  let component: InfiniteProductsComponent;
+  let fixture: ComponentFixture<InfiniteProductsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoryComponent ]
+      declarations: [ InfiniteProductsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CategoryComponent);
+    fixture = TestBed.createComponent(InfiniteProductsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

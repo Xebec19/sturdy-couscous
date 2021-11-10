@@ -25,11 +25,9 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     this.signUpForm.controls.email.patchValue(this.signUpForm.controls.email.value.trim());
     this.signUpForm.controls.phone.patchValue(+this.signUpForm.controls.phone.value);
-    console.log("Sign up form value : ",this.signUpForm.value);
     this.requestService.postRequest('/public/register',this.signUpForm.value).subscribe((response:any) => {
       if(response.body.status){
         const token = response.body.data.trim().split(" ")[1];
-        // localStorage.setItem('token',token);
         this.localStorageService.token = token;
         this.appStateService.userToken$.next(token);
         this.router.navigate(['/home']);

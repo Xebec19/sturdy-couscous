@@ -17,10 +17,7 @@ export class CategoriesComponent implements OnInit{
       .getRequest('/public/category?includeImg=true')
       .subscribe(
         (response: any) => {
-          this.categories = response.data;
-        },
-        (error: any) => {
-          console.log(error.message);
+          this.categories = this.mode === 'desktop' ? response.data.slice(0,9) : response.data;
         }
       );
   }

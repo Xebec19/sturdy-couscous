@@ -10,8 +10,14 @@
     overflow-x: hidden;
     margin-left: 5px;
   }
-  .desktop {
+  .column {
     width: 400px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .column img{
+    height: 274px;
   }
   app-spinner{
     width: 100%;

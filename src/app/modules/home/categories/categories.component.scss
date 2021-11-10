@@ -10,9 +10,14 @@
     overflow-x: hidden;
     margin-right: 5px;
   }
-  .desktop {
-    width: 400px;
-  }
+.column {
+  width: 400px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+.column img{
+  height: auto;
+}
   app-spinner{
     width: 100%;
   }

@@ -1,7 +1,5 @@
 <ng-container>
-<div *ngIf="!isMobile; else mobileTemplate"></div>
-
-<ng-template #mobileTemplate>
+<ng-container #mobileTemplate>
   <div class="view-cart-mobile">
     <div class="view-cart-mobile__title-container">
       <span class="view-cart-mobile__title-container__text"> Your Cart </span>
@@ -13,7 +11,7 @@
         alt="empty cart"
       />
       <!--todo add route to shop page-->
-      <p class="view-cart-mobile__cart-items-empty__link">Continue shopping</p>
+      <p class="view-cart-mobile__cart-items-empty__link mt-2" [routerLink]="['/shop/all']">Continue shopping</p>
     </div>
     <div class="view-cart-mobile__cart-items-fill" *ngIf="cartItems.length">
       <div *ngFor="let item of cartItems">
@@ -95,5 +93,5 @@
     <button mat-raised-button color='primary' class='view-cart-mobile__payment-btn' [disabled]="!!!this.checkoutService.shippingAddress.getValue()" (click)="onPayment()">Payment</button>
   </section>
   <mat-divider *ngIf="cartItems.length"></mat-divider>
-</ng-template>
+</ng-container>
 

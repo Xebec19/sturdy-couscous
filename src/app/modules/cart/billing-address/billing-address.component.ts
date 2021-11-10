@@ -32,7 +32,6 @@ export class BillingAddressComponent implements OnInit {
     if(this.billingAddressForm.invalid){
       return;
     }
-    console.log("--billing address : ",this.billingAddressForm);
     this.checkoutService.setShippingDetails(JSON.stringify(this.billingAddressForm.value),this.billingAddressForm.controls.email.value);
   }
 

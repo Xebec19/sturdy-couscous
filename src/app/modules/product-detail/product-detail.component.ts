@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { IProductDetails } from 'src/app/models';
 import { AppStateService } from 'src/app/services/app-state.service';
+import { LocalStorageService } from 'src/app/services/local-storage-service.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 @Component({
   selector: 'app-product-detail',
@@ -31,7 +32,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private requestService: RequestHandlerService,
     private appStateService: AppStateService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -68,10 +70,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   addToCart() {
-    console.log('--cart details : ', {
-      quantity: this.selectedQuantity,
-      productId: this.product.product_id,
-    });
+    if(!this.localStorageService.token){
+      this.router.navigate(['/user/login']);
+      return;
+    }
     const data = {
       productId: this.product.product_id,
       qty: this.selectedQuantity,

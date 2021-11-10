@@ -17,8 +17,9 @@ export class CardsComponent implements OnInit {
     this.getProducts();
   }
   getProducts() {
+    const url = (this.mode === 'mobile') ? '/public/fetchProducts?limit=10' : '/public/fetchProducts?limit=6'
     this.requestService
-      .getRequest('/public/fetchProducts?limit=10')
+      .getRequest(url)
       .pipe(
         map((res: any) => {
           if (res.status) {
@@ -29,9 +30,6 @@ export class CardsComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.products = response.data;
-        },
-        (error: any) => {
-          console.log(error.message);
         }
       );
   }
