@@ -1,9 +1,9 @@
 export interface IProductsApiResponse {
     message: string;
     status: boolean;
-    data?: (DataEntity)[] | null;
+    data?: (IProducts)[] | null;
   }
-  export interface DataEntity {
+  export interface IProducts {
     product_id: number;
     category_id: number;
     product_name: string;
