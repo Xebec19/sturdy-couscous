@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://nameless-woodland-04674.herokuapp.com',
   RAZORPAY_KEY: 'rzp_test_1vELyPcr5Vic0l'
 };
 
