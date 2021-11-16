@@ -57,11 +57,6 @@ export class CheckoutService {
                 response.razorpay_order_id,
                 response.razorpay_signature
               ),
-            prefill: {
-              name: 'Rohan', // todo change it
-              email: 'rohan@gmail.com',
-              contact: '3434343434',
-            },
             theme: {
               color: '#3f51b5',
             },
@@ -72,6 +67,8 @@ export class CheckoutService {
             this.appStateService.showAlert('Payment failed');
           });
         }
+      },error => {
+        console.log('--error ',error);
       });
   };
 

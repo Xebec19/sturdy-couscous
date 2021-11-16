@@ -85,6 +85,7 @@ export class ViewCartComponent implements OnInit {
       cartId: +data.cartId,
       qty: +data.quantity,
     };
+    if(!!!payload.qty) return;
     this.requestService.postRequest('/cart/edit_cart', payload).subscribe(
       (response) => {
         if (response.body.status) {

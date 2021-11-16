@@ -8,3 +8,14 @@ h3 {
   text-align: center;
   font-size: 2.5rem;
 }
+.desktop-cards{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.explore-more{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}

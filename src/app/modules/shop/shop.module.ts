@@ -7,7 +7,6 @@ import { CardComponent } from './cards/cards.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SpinnerModule } from '../../shared/spinner/spinner.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { InfiniteProductsComponent } from './infinite-products/infinite-products.component';
 import { ResolverService } from './services/resolver.service';
 @NgModule({
@@ -23,7 +22,6 @@ import { ResolverService } from './services/resolver.service';
     MaterialModule,
     SpinnerModule,
     PipesModule,
-    InfiniteScrollModule,
   ],
   providers: [ResolverService]
 })
