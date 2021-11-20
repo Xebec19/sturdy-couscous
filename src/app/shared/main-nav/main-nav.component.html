@@ -13,7 +13,8 @@
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/']">Home</a>
       <a mat-list-item *ngIf="this.appStateService.userToken$| async" (click)="logout()"  >Logout</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item *ngIf="!(this.appStateService.userToken$| async)" [routerLink]="['/shop/all']">Shop</a>
+      <a mat-list-item *ngIf="!(this.appStateService.userToken$| async)" [routerLink]="['/user']">Login</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
