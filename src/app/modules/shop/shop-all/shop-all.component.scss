@@ -8,15 +8,16 @@ h3 {
   text-align: center;
   font-size: 2.5rem;
   color: slategrey;
+  padding: 2rem 4rem;
 }
-.desktop-cards{
-  display:flex;
+.desktop-cards {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
-.explore-more{
-  display:flex;
-  flex-wrap:wrap;
+.explore-more {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }

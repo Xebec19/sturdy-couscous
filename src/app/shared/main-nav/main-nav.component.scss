@@ -6,11 +6,11 @@
   width: 200px;
 }
 
-.cart-sidenav-desktop{
+.cart-sidenav-desktop {
   width: 400px;
 }
 
-.cart-sidenav-mobile{
+.cart-sidenav-mobile {
   width: 200px;
 }
 
@@ -25,13 +25,13 @@
   z-index: 1;
   // position: relative;
 }
-.hidden{
+.hidden {
   display: none;
 }
-mat-icon{
+mat-icon {
   cursor: pointer;
 }
-mat-sidenav-content{
+mat-sidenav-content {
   width: 100%;
   overflow-x: hidden;
 }

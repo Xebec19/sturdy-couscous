@@ -24,6 +24,9 @@ app-spinner{
 span:nth-child(1){
   margin-left: 5px;
 }
-mat-card img{
-  height: 153px;
+@media screen and (min-width: 600px) {
+  mat-card img {
+    height: 533px !important;
+    width: 400px !important;
+  }
 }

@@ -12,9 +12,19 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/']">Home</a>
-      <a mat-list-item *ngIf="this.appStateService.userToken$| async" (click)="logout()"  >Logout</a>
-      <a mat-list-item *ngIf="!(this.appStateService.userToken$| async)" [routerLink]="['/shop/all']">Shop</a>
-      <a mat-list-item *ngIf="!(this.appStateService.userToken$| async)" [routerLink]="['/user']">Login</a>
+      <a mat-list-item [routerLink]="['/shop/all']">Shop</a>
+      <a
+        mat-list-item
+        *ngIf="this.appStateService.userToken$ | async"
+        (click)="logout()"
+        >Logout</a
+      >
+      <a
+        mat-list-item
+        *ngIf="!(this.appStateService.userToken$ | async)"
+        [routerLink]="['/user']"
+        >Login</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -36,14 +46,30 @@
         [routerLink]="['/cart/view-cart']"
         *ngIf="isHandset$ && this.appStateService.userToken$ | async"
       >
-        <mat-icon aria-hidden="false" aria-label="cart icon" matBadgeColor="accent"
+        <mat-icon
+          aria-hidden="false"
+          aria-label="cart icon"
+          matBadgeColor="accent"
           >shopping_cart</mat-icon
         >
       </button>
-      <mat-icon *ngIf="!(this.appStateService.userToken$ | async)" [routerLink]="['/user']" aria-hidden="false" aria-label="cart icon" 
-          >account_circle</mat-icon
-        >
+      <mat-icon
+        *ngIf="!(this.appStateService.userToken$ | async)"
+        [routerLink]="['/user']"
+        aria-hidden="false"
+        aria-label="cart icon"
+        >account_circle</mat-icon
+      >
     </mat-toolbar>
     <ng-content></ng-content>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#3f51b5"
+        fill-opacity="1"
+        d="M0,128L80,133.3C160,139,320,149,480,149.3C640,149,800,139,960,133.3C1120,128,1280,128,1360,128L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+      >
+    Hello
+    </path>
+    </svg>
   </mat-sidenav-content>
 </mat-sidenav-container>
