@@ -1,0 +1,23 @@
+<section class="search-container">
+  <ais-instantsearch [config]="config">
+    <div class="left-panel">
+      <ais-clear-refinements></ais-clear-refinements>
+      <h2>Categories</h2>
+      <ais-refinement-list attribute="category_name" [searchable]="true"></ais-refinement-list>
+      <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
+    </div>
+    <div class="right-panel">
+    <ais-search-box></ais-search-box>
+    <ais-hits>
+      <ng-template let-hits="hits">
+        <ol class="ais-Hits-list">
+          <li *ngFor="let hit of hits" class="ais-Hits-item">
+            <img [src]="hit" alt="">
+            <span>{{ hit.product_name }}</span>
+          </li>
+        </ol>
+      </ng-template>
+    </ais-hits>
+  </div>
+  </ais-instantsearch>
+</section>
