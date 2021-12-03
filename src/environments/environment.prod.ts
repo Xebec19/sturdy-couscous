@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   baseUrl: 'https://nameless-woodland-04674.herokuapp.com', 
   RAZORPAY_KEY: 'rzp_test_1vELyPcr5Vic0l',
-  ALGOLIA_APP_NAME: 'CQOZTTWEB9',
-  ALGOLIA_API_KEY: '793383f9fde6087108c5f57ebafc3192',
-  ALGOLIA_INDEX: 'SG-products',
+  ALGOLIA_APP_NAME: 'K7KUS0Y1EI',
+  ALGOLIA_API_KEY: '144f65d55d820961d407a139b007dd0d',
+  ALGOLIA_INDEX: 'bazaar_index',
 };
