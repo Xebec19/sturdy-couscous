@@ -4,6 +4,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchRoutingModule } from './search-routing.module';
 import { NgAisModule } from 'angular-instantsearch';
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [SearchComponent],
@@ -12,6 +13,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     MaterialModule,
     SearchRoutingModule,
     NgAisModule.forRoot(),
+    FormsModule
   ],
 })
 export class SearchModule {}

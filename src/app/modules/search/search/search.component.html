@@ -1,47 +1,18 @@
-<!-- <section class="search-container">
-  <ais-instantsearch [config]="config">
-    <div class="left-panel">
-      <ais-search-box></ais-search-box>
-      <mat-icon aria-hidden="false" aria-label="Example home icon"
-        >home</mat-icon
-      >
-
-      <ais-hits>
-        <ng-template let-hits="hits">
-          <ol class="ais-Hits-list">
-            <li *ngFor="let hit of hits" class="ais-Hits-item">
-              <span>{{ hit.product_name }}</span>
-              <span
-                ><img
-                  class="search__hit-image"
-                  [src]="hit.image"
-                  [alt]="hit.product_name"
-              /></span>
-              <span></span>
-            </li>
-          </ol>
-        </ng-template>
-      </ais-hits>
-    </div>
-    <div class="right-panel">
-      <ais-clear-refinements></ais-clear-refinements>
-      <h2>Categories</h2>
-      <ais-refinement-list
-        attribute="category"
-        [searchable]="true"
-      ></ais-refinement-list>
-      <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
-    </div>
-  </ais-instantsearch>
-</section> -->
-
 <section class="search__body">
   <ais-instantsearch [config]="config">
     <ais-configure [searchParameters]="searchParameters"></ais-configure>
     <span class="search__input">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Search Products</mat-label>
-        <input matInput placeholder="Search products" />
+        <input
+          matInput
+          placeholder="Search products"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="none"
+          spellcheck="false"
+          [(ngModel)]="searchParameters.query"
+        />
       </mat-form-field>
       <mat-icon
         class="search__icon"
@@ -53,6 +24,7 @@
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title> Filters</mat-panel-title>
+        <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
         <mat-panel-description class="search__filter-icon">
           <mat-icon
             class="search__icon"
@@ -62,7 +34,12 @@
           >
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
+        <ais-refinement-list
+        class="form-control list-group"
+          attribute="category"
+          [searchable]="false"
+          [transformItems]="transformItems"
+        ></ais-refinement-list>
     </mat-expansion-panel>
 
     <div class="search__result-body">
@@ -74,11 +51,17 @@
                 <img [src]="hit.image" alt="" class="img-cntn__img" />
               </div>
               <div class="result-body__product-desc">
-                <h1 class="product-desc__title">{{ hit.product_name | titlecase }}</h1>
-                <h2 class="product-desc__category">{{ hit.category | titlecase }}</h2>
+                <h1 class="product-desc__title">
+                  {{ hit.product_name | titlecase }}
+                </h1>
+                <h2 class="product-desc__category">
+                  {{ hit.category | titlecase }}
+                </h2>
                 <dl class="product-desc__price">
                   <dt class="price__label">Price</dt>
-                  <dd class="price__amount">&nbsp;&nbsp;{{ hit.price | currency: "₹"}}</dd>
+                  <dd class="price__amount">
+                    &nbsp;&nbsp;{{ hit.price | currency: "₹" }}
+                  </dd>
                 </dl>
               </div>
             </a>
