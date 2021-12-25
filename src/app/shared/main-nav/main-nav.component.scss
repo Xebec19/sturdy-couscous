@@ -35,6 +35,10 @@ mat-sidenav-content {
   width: 100%;
   overflow-x: hidden;
 }
+.main-nav__footer{
+  position: fixed;
+  bottom: 0px;
+}
 @media only screen and (max-width: 600px) {
   svg{
     display: none;

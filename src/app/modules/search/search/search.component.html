@@ -1,13 +1,23 @@
-<section class="search-container">
+<!-- <section class="search-container">
   <ais-instantsearch [config]="config">
     <div class="left-panel">
       <ais-search-box></ais-search-box>
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >home</mat-icon
+      >
+
       <ais-hits>
         <ng-template let-hits="hits">
           <ol class="ais-Hits-list">
             <li *ngFor="let hit of hits" class="ais-Hits-item">
-              <img [src]="hit" alt="" />
               <span>{{ hit.product_name }}</span>
+              <span
+                ><img
+                  class="search__hit-image"
+                  [src]="hit.image"
+                  [alt]="hit.product_name"
+              /></span>
+              <span></span>
             </li>
           </ol>
         </ng-template>
@@ -23,4 +33,52 @@
       <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
     </div>
   </ais-instantsearch>
+</section> -->
+
+<section class="search__body">
+  <span class="search__input">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Search Products</mat-label>
+      <input matInput placeholder="Search products" />
+    </mat-form-field>
+    <mat-icon class="search__icon" aria-hidden="false" aria-label="search icon"
+      >search</mat-icon
+    >
+  </span>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Filters</mat-panel-title>
+      <mat-panel-description class="search__filter-icon">
+        <mat-icon
+          class="search__icon"
+          aria-hidden="false"
+          aria-label="search icon"
+          >filter_list</mat-icon
+        >
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+
+  <div class="search__result-body">
+    <div>
+      <a href="#" class="search__product-link">
+        <div class="search__img-cntn">
+          <img
+            src="http://mrmrs.github.io/images/0010.jpg"
+            alt=""
+            class="img-cntn__img"
+          />
+        </div>
+        <div class="result-body__product-desc">
+          <h1 class="product-desc__title">Grid Systems</h1>
+          <h2 class="product-desc__category">Category</h2>
+          <dl class="product-desc__price">
+            <dt class="price__label">Price</dt>
+            <dd class="price__amount">$45.00</dd>
+          </dl>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>

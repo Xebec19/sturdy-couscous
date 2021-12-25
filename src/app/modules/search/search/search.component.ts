@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import algoliasearch from 'algoliasearch';
 import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -15,6 +14,7 @@ export class SearchComponent implements OnInit {
   config = {
     indexName: environment.ALGOLIA_INDEX,
     searchClient: this.searchClient,
+    routing: true,
   };
   constructor() {}
 
