@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
     `${environment.ALGOLIA_APP_NAME}`,
     `${environment.ALGOLIA_API_KEY}`
   );
+  searchParameters: { query: string } = { query: '' };
   config = {
     indexName: environment.ALGOLIA_INDEX,
     searchClient: this.searchClient,
