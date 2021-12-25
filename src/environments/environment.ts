@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   baseUrl: 'http://localhost:4001',
   RAZORPAY_KEY: 'rzp_test_1vELyPcr5Vic0l',
-  ALGOLIA_APP_NAME: 'K7KUS0Y1EI',
-  ALGOLIA_API_KEY: '144f65d55d820961d407a139b007dd0d',
+  ALGOLIA_APP_NAME: 'QXZP1BIGWI',
+  ALGOLIA_API_KEY: 'eee6e7a810e9bfc9c8c8e9643820170f',
   ALGOLIA_INDEX: 'bazaar_index',
 };
 

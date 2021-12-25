@@ -17,9 +17,9 @@ export class LoggingInterceptorService implements HttpInterceptor {
     private ls: LocalStorageService
   ) {}
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    console.log('Outgoing request');
-    console.log(req.url);
-    console.log(req.headers);
+    //console.log('Outgoing request');
+    //console.log(req.url);
+    //console.log(req.headers);
     this.appStateService.isLoading$.next(true);
     return next.handle(req).pipe(
       tap((event) => {
@@ -28,8 +28,8 @@ export class LoggingInterceptorService implements HttpInterceptor {
           if (event.body.statusText === 'Unauthorized') {
             this.ls.clear();
           }
-          console.log('Incoming response');
-          console.log(event.body); // use it only for debugging
+          //console.log('Incoming response');
+          //console.log(event.body); // use it only for debugging
         }
       })
     );
