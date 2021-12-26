@@ -1,7 +1,7 @@
 <section class="search__body container-lg">
   <ais-instantsearch [config]="config">
     <ais-configure [searchParameters]="searchParameters"></ais-configure>
-    <span class="search__input">
+    <span class="search__input container">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Search Products</mat-label>
         <input
@@ -46,7 +46,7 @@
       <ais-hits>
         <ng-template let-hits="hits">
           <div *ngFor="let hit of hits">
-            <a href="#" class="search__product-link">
+            <a [routerLink]="['/product/' + hit.objectID]" class="search__product-link">
               <div class="search__img-cntn">
                 <img [src]="hit.image" alt="" class="img-cntn__img" />
               </div>

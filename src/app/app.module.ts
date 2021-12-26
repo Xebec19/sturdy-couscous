@@ -10,7 +10,6 @@ import { MaterialModule } from './shared/material/material.module';
 import { AppStateService } from './services/app-state.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
-import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { RequestHandlerService } from './services/request-handler.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -41,11 +40,6 @@ import { EffectsModule } from '@ngrx/effects';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingInterceptorService,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
       multi: true,
     },
     RequestHandlerService,

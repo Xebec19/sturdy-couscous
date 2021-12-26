@@ -13,25 +13,7 @@
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/']">Home</a>
       <a mat-list-item [routerLink]="['/shop/all']">Shop</a>
-      <a
-        mat-list-item
-        *ngIf="this.appStateService.userToken$ | async"
-        [routerLink]="['/cart/view-cart']"
-        >Cart</a
-      >
       <a mat-list-item [routerLink]="['/search']">Search</a>
-      <a
-        mat-list-item
-        *ngIf="this.appStateService.userToken$ | async"
-        (click)="logout()"
-        >Logout</a
-      >
-      <a
-        mat-list-item
-        *ngIf="!(this.appStateService.userToken$ | async)"
-        [routerLink]="['/user']"
-        >Login</a
-      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -60,28 +42,7 @@
             >search</mat-icon
           >
         </button>
-        <button
-          type="button"
-          aria-label="Cart"
-          mat-icon-button
-          [routerLink]="['/cart/view-cart']"
-          *ngIf="isHandset$ && this.appStateService.userToken$ | async"
-        >
-          <mat-icon
-            aria-hidden="false"
-            aria-label="cart icon"
-            matBadgeColor="accent"
-            >shopping_cart</mat-icon
-          >
-        </button>
       </span>
-      <mat-icon
-        *ngIf="!(this.appStateService.userToken$ | async)"
-        [routerLink]="['/user']"
-        aria-hidden="false"
-        aria-label="cart icon"
-        >account_circle</mat-icon
-      >
     </mat-toolbar>
     <ng-content></ng-content>
     <svg

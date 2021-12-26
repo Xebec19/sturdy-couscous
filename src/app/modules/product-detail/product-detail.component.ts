@@ -6,7 +6,6 @@ import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { IProductDetails } from 'src/app/models';
 import { AppStateService } from 'src/app/services/app-state.service';
-import { LocalStorageService } from 'src/app/services/local-storage-service.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 @Component({
   selector: 'app-product-detail',
@@ -33,7 +32,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private appStateService: AppStateService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -69,57 +67,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  addToCart() {
-    if(!this.localStorageService.token){
-      this.router.navigate(['/user/login']);
-      return;
-    }
-    const data = {
-      productId: this.product.product_id,
-      qty: this.selectedQuantity,
-    };
-    this.requestService.postRequest('/cart/add_item', data).subscribe(
-      (response) => {
-        if (response.body.status) {
-          this._snackBar.open('Product added to cart', 'Close', {
-            duration: 500,
-          });
-          this.selectedQuantity = 0;
-          this.product.quantity = response.body.data;
-        } else {
-          this._snackBar.open(
-            'Error, product could not be added to cart',
-            'Close',
-            {
-              duration: 500,
-            }
-          );
-        }
-      },
-      (error) => {
-        this._snackBar.open(
-          'Error, product could not be added to cart',
-          'Close',
-          {
-            duration: 500,
-          }
-        );
-      }
-    );
-  }
-
-  openSnackBar() {
-    this._snackBar.open('sorry, no more quantity available', 'Close', {
-      duration: 5000,
-    });
-  }
-  updateQuantity(action: string) {
-    if (action === 'inc') {
-      this.selectedQuantity < this.product.quantity
-        ? this.selectedQuantity++
-        : this.openSnackBar();
-    }
-  }
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
     this.priceSymbolSubsciption.unsubscribe();

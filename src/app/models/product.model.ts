@@ -19,8 +19,8 @@ export interface IProduct {
     created_on: string;
     updated_on: string;
     status: string;
-    price: string;
-    delivery_price: string;
+    price?: string;
+    delivery_price?: string;
     product_desc: string;
     gender: string;
   }

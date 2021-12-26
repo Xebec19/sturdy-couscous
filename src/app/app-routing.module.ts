@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckTokenService } from './services/check-token.service';
 const routes: Routes = [
   {
     path: 'home',
@@ -12,25 +11,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/product-detail/product-detail.module').then(
         (m) => m.ProductDetailModule
-      ),
-  },
-  {
-    path: 'user',
-    loadChildren: () =>
-      import('./modules/user/user.module').then((m) => m.UserModule),
-  },
-  {
-    path: 'cart',
-    canActivate: [CheckTokenService],
-    loadChildren: () =>
-      import('./modules/cart/cart.module').then((m) => m.CartModule),
-  },
-  {
-    path: 'receipt',
-    canActivate: [CheckTokenService],
-    loadChildren: () =>
-      import('./modules/order-receipt/order-receipt.module').then(
-        (m) => m.OrderReceiptModule
       ),
   },
   {

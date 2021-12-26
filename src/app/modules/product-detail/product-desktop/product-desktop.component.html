@@ -25,22 +25,6 @@
           </p>
         </div>
       </div>
-      <mat-toolbar *ngIf="product.quantity > 0" color="primary">
-        <span>
-          <mat-icon>remove_circle_outline</mat-icon>
-          &nbsp;
-          <span class="qty">{{ this.selectedQuantity }}</span>
-          &nbsp;
-          <mat-icon (click)="updateQuantity('inc')">add_circle_outline</mat-icon>
-        </span>
-        <mat-icon (click)="addToCart()">add_shopping_cart</mat-icon>
-      </mat-toolbar>
-      <mat-toolbar *ngIf="!(product.quantity > 0)" color="accent"
-        ><span class="out-of-stock"
-          ><mat-icon>remove_shopping_cart</mat-icon>&nbsp;
-          <p>Out of stock</p></span
-        ></mat-toolbar
-      >
     </div>
     </div>
     <h3 class="title">Similar Products</h3>
