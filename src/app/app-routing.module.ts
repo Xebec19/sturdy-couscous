@@ -10,7 +10,9 @@ const routes: Routes = [
   {
     path: 'product/:id',
     loadChildren: () =>
-      import('./modules/product-detail/product-detail.module').then((m) => m.ProductDetailModule),
+      import('./modules/product-detail/product-detail.module').then(
+        (m) => m.ProductDetailModule
+      ),
   },
   {
     path: 'user',
@@ -19,26 +21,37 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    canActivate:[CheckTokenService],
-    loadChildren: () => 
-    import('./modules/cart/cart.module').then((m) => m.CartModule)
+    canActivate: [CheckTokenService],
+    loadChildren: () =>
+      import('./modules/cart/cart.module').then((m) => m.CartModule),
   },
   {
     path: 'receipt',
-    canActivate:[CheckTokenService],
-    loadChildren: () => import('./modules/order-receipt/order-receipt.module').then((m) => m.OrderReceiptModule)
+    canActivate: [CheckTokenService],
+    loadChildren: () =>
+      import('./modules/order-receipt/order-receipt.module').then(
+        (m) => m.OrderReceiptModule
+      ),
   },
   {
     path: 'shop',
-    loadChildren: () => import('./modules/shop/shop.module').then((m) => m.ShopModule)
+    loadChildren: () =>
+      import('./modules/shop/shop.module').then((m) => m.ShopModule),
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('./modules/search/search.module').then((m) => m.SearchModule),
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
