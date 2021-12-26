@@ -70,3 +70,11 @@ ais-refinement-list {
   width: 100%;
   list-style-type: none !important;
 }
+@media only screen and (max-width: 600px) {
+  .result-body__hits{
+    width: 30%;
+  }
+  .search__product-link{
+    width: 30%;
+  }
+}

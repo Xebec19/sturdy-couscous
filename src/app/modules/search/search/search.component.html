@@ -1,4 +1,4 @@
-<section class="search__body">
+<section class="search__body container-lg">
   <ais-instantsearch [config]="config">
     <ais-configure [searchParameters]="searchParameters"></ais-configure>
     <span class="search__input">
@@ -34,12 +34,12 @@
           >
         </mat-panel-description>
       </mat-expansion-panel-header>
-        <ais-refinement-list
+      <ais-refinement-list
         class="form-control list-group"
-          attribute="category"
-          [searchable]="false"
-          [transformItems]="transformItems"
-        ></ais-refinement-list>
+        attribute="category"
+        [searchable]="false"
+        [transformItems]="transformItems"
+      ></ais-refinement-list>
     </mat-expansion-panel>
 
     <div class="search__result-body">
