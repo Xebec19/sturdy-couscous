@@ -13,6 +13,7 @@ export class ReceiptComponent implements OnInit {
   ngOnInit(): void {
     this.orderIdSubs = this.route.params.subscribe((params: Params) => {
       this.orderId = params['order-id'];
+      console.log(this.orderId);
     });
   }
   ngOnDestroy(): void {
