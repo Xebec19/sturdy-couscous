@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'http://localhost:4001',
   RAZORPAY_KEY: 'rzp_test_1vELyPcr5Vic0l'
 };
 
