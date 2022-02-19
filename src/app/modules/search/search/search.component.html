@@ -46,7 +46,7 @@
       <ais-hits>
         <ng-template let-hits="hits">
           <div *ngFor="let hit of hits">
-            <a href="#" class="search__product-link">
+            <a href='/product/{{hit.objectID}}' class="search__product-link">
               <div class="search__img-cntn">
                 <img [src]="hit.image" alt="" class="img-cntn__img" />
               </div>
