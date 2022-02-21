@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:4001',
+  baseUrl: 'http://localhost:5000',
   RAZORPAY_KEY: 'rzp_test_1vELyPcr5Vic0l',
   ALGOLIA_APP_NAME: 'QXZP1BIGWI',
   ALGOLIA_API_KEY: 'eee6e7a810e9bfc9c8c8e9643820170f',
