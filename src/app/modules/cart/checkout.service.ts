@@ -30,11 +30,11 @@ export class CheckoutService {
   }
 
   makePayment = async (amount: Number) => {
-    if (!!!this.shippingAddress.getValue()) {
+    if (!this.shippingAddress.getValue()) {
       this.appStateService.showAlert('Invalid address');
       return;
     }
-    if (!!!amount) {
+    if (!amount) {
       this.appStateService.showAlert('Amount is required');
     }
     this.requestService

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:5000',
-  RAZORPAY_KEY: 'rzp_test_1vELyPcr5Vic0l',
+  baseUrl: 'http://localhost:4001',
+  RAZORPAY_KEY: 'rzp_test_wBThT8R4x6VnEr',
   ALGOLIA_APP_NAME: 'QXZP1BIGWI',
   ALGOLIA_API_KEY: 'eee6e7a810e9bfc9c8c8e9643820170f',
   ALGOLIA_INDEX: 'bazaar_index',
