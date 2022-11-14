@@ -5,10 +5,10 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:4001',
-  RAZORPAY_KEY: 'rzp_test_wBThT8R4x6VnEr',
-  ALGOLIA_APP_NAME: 'QXZP1BIGWI',
-  ALGOLIA_API_KEY: 'eee6e7a810e9bfc9c8c8e9643820170f',
-  ALGOLIA_INDEX: 'bazaar_index',
+  RAZORPAY_KEY: '',
+  ALGOLIA_APP_NAME: '',
+  ALGOLIA_API_KEY: '',
+  ALGOLIA_INDEX: '',
 };
 
 /*
